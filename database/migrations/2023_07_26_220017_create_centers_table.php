@@ -25,6 +25,9 @@ return new class extends Migration
             $table->string('motorcycle',1);
             $table->string('trailer_less_10000',1);
             $table->string('trailer_greater_10000',1);
+            $table->string('station_street_address', 100)->nullable();
+            $table->string('station_city', 100)->nullable();
+            $table->string('station_zip', 10)->nullable();
         });
     }
 

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CenterController;
+use App\Http\Controllers\MainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::controller(MainController::class)->group(function(){
+    Route::get('/', 'viewHomePage');
+});
+
+Route::controller(CenterController::class)->group(function(){
+    Route::get('/centers', 'viewCenters');
+    Route::get('/centers/{center}', 'viewCenter');
 });

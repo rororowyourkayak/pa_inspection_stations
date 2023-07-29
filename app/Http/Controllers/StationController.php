@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Center; 
+use App\Models\Station;
 
-class CenterController extends Controller
+class StationController extends Controller
 {
-    
+    //
 }

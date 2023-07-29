@@ -1,3 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Noto+Sans&display=swap');
 
-.noto{font-family: 'Noto Sans', sans-serif;}
+.noto, .nav-link{font-family: 'Noto Sans', sans-serif;}
+.inter {font-family: 'Inter', sans-serif;}
+
+body{
+    background-color: #eaeaf4;
+}
+
+.custom-blue-bg{
+    background-color: rgb(37, 92, 180);
+}

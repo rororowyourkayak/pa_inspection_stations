@@ -10,4 +10,9 @@ body{
 
 .custom-blue-bg{
     background-color: rgb(37, 92, 180);
+    color: white;
+}
+
+.custom-blue-border{
+    border: 2px solid steelblue
 }

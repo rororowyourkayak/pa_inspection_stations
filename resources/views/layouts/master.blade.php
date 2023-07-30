@@ -34,9 +34,9 @@
 
     <footer>
         
-        <div class="col-sm-12 text-center bg-white rounded py-4">
+        <div class="col-sm-12 text-center bg-white py-4">
             <p>This site is privately maintained, not affiliated with PennDOT or any other government body.
-            <br> Information regaring inspection programs and stations was retrieved from PennDOT.
+            <br> Information regarding inspection programs and stations was retrieved from PennDOT.
             <br> All information used on this site is within the public domain. 
             </p>
         </div>

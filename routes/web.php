@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CenterController;
+use App\Http\Controllers\StationController;
 use App\Http\Controllers\MainController;
 
 /*
@@ -19,7 +19,7 @@ Route::controller(MainController::class)->group(function(){
     Route::get('/', 'viewHomePage');
 });
 
-Route::controller(CenterController::class)->group(function(){
-    Route::get('/centers', 'viewCenters');
-    Route::get('/centers/{center}', 'viewCenter');
+Route::controller(StationController::class)->group(function(){
+    Route::get('/stations', 'viewStations');
+    Route::get('/stations/{station}', 'viewStation');
 });

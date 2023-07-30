@@ -28,6 +28,8 @@ return new class extends Migration
             $table->string('station_street_address', 100)->nullable();
             $table->string('station_city', 100)->nullable();
             $table->string('station_zip', 10)->nullable();
+            $table->string('station_zip_plus_4', 10)->nullable();
+            $table->string('station_name_slug', 100)->nullable();
         });
 
     }

@@ -9,7 +9,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body>
+<body class="custom-font">
     <nav class="navbar navbar-expand-sm navbar-dark custom-blue-bg">
         <div class="container-fluid">
             <ul class="navbar-nav">
@@ -19,13 +19,13 @@
             </ul>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a href="/" class="nav-link text-white">Link 1</a>
+                    <a href="/stations" class="nav-link text-white">Stations List</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/" class="nav-link text-white">Link 2</a>
+                    <a href="/counties" class="nav-link text-white">Counties</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/" class="nav-link text-white">Link 3</a>
+                    <a href="/cities" class="nav-link text-white">Cities</a>
                 </li>
             </ul>
         </div>

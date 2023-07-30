@@ -9,6 +9,7 @@ class County extends Model
 {
     use HasFactory;
 
+    protected $fillable = ["county", "county_slug"];
     public $timestamps = false;
 
 

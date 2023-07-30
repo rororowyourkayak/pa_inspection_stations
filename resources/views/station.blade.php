@@ -1,7 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="col-sm-8 my-4 py-4 bg-white mx-auto text-center custom-blue-border rounded">
+
+<div class=" col-sm-8 my-4 py-4 bg-white mx-auto text-center">
     <h1>{{$station->station_name}}</h1>
     <h6>{{$station->station_street_address}}</h6>
     <h6>{{$station->station_city}}, PA {{$station->station_zip_plus_4}}</h6>
@@ -17,82 +18,84 @@
     </div>
 </div>
 
-<div class="row">
 
-
-<div class="col-sm-8 my-4 p-4 bg-white mx-auto text-center custom-blue-border rounded">
-    <table class="table table-response-sm table-striped table-bordered ">
-        <thead class="thead custom-blue-bg">
+<div class=" col-sm-8 my-4 p-4 bg-white mx-auto text-center ">
+    <h2>Vehicle Types Inspected</h2>
+    <p>The table below shows which types of vehicles are inspected by this station.</p>
+    <table class="table table-response-sm table-striped table-bordered">
+        <thead class="table-primary">
             <tr>
                 <th>Vehicle Type</th>
-                <th>Inspected by Station</th>
+                <th>Inspected by Station?</th>
             </tr>
         </thead>
 
         <tr>
             <td>Passenger Cars / Light Trucks</td>
             <td>
-                @if($station ->passenger_cars_and_light_trucks) 
-                    Yes
-                @else 
-                    No
+                @if($station ->passenger_cars_and_light_trucks)
+                Yes
+                @else
+                No
                 @endif
             </td>
         </tr>
         <tr>
             <td>Medium Trucks</td>
             <td>
-                @if($station ->medium_trucks) 
-                    Yes
-                @else 
-                    No
+                @if($station ->medium_trucks)
+                Yes
+                @else
+                No
                 @endif
             </td>
         </tr>
         <tr>
             <td>Heavy Trucks</td>
             <td>
-                @if($station ->heavy_trucks) 
-                    Yes
-                @else 
-                    No
+                @if($station ->heavy_trucks)
+                Yes
+                @else
+                No
                 @endif
             </td>
         </tr>
         <tr>
             <td>Motorcycle</td>
             <td>
-                @if($station ->motorcycle) 
-                    Yes
-                @else 
-                    No
+                @if($station ->motorcycle)
+                Yes
+                @else
+                No
                 @endif
             </td>
         </tr>
         <tr>
             <td>Trailer 10,000 lbs. or less</td>
             <td>
-                @if($station ->trailer_less_10000) 
-                    Yes
-                @else 
-                    No
+                @if($station ->trailer_less_10000)
+                Yes
+                @else
+                No
                 @endif
             </td>
         </tr>
         <tr>
             <td>Trailer 10,000 lbs. or more</td>
             <td>
-                @if($station ->trailer_greater_10000) 
-                    Yes
-                @else 
-                    No
+                @if($station ->trailer_greater_10000)
+                Yes
+                @else
+                No
                 @endif
             </td>
         </tr>
 
     </table>
 </div>
-</div>
+
+
+
 
 
 

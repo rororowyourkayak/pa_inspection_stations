@@ -3,7 +3,7 @@
 @section('content')
 <div class="container bg-white my-4 p-4 text-center">
     <h1>PA Safety Inspection Stations</h1>
-    <p>This page displays of all stations, sorted by station name.</p>
+    <p>This page displays of all stations, sorted by station name:</p>
 
     <div class="container p-4">
     <table class="table table-response-sm table-striped table-bordered">

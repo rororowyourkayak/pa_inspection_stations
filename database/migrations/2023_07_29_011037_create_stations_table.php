@@ -4,6 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use App\Imports\StationsImport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Models\Station;
+use Illuminate\Support\Str;
+
+
 return new class extends Migration
 {
     /**
@@ -13,7 +19,7 @@ return new class extends Migration
     {
         Schema::create('stations', function (Blueprint $table) {
             $table->id();
-            $table->string('county', 30);
+            $table->string('station_county', 30);
             $table->string('station_name', 100);
             $table->string('ois_number', 5);
             $table->string('station_address', 200);
@@ -30,7 +36,36 @@ return new class extends Migration
             $table->string('station_zip', 10)->nullable();
             $table->string('station_zip_plus_4', 10)->nullable();
             $table->string('station_name_slug', 100)->nullable();
+            $table->string('city', 100)->nullable();
+            $table->string('county', 30)->nullable();
         });
+
+        Excel::import(new StationsImport, storage_path('pa_inspection_pg_1_excel.xlsx'));
+
+        $stations = Station::all();
+
+        foreach($stations as $station){
+            $address = $station -> station_address; 
+            $streetAddress = trim(substr($address,0,strpos($address,",")));
+            $city = trim(substr($address,strpos($address,",")+1,strpos($address,"PA")-strpos($address,",")-2));
+            $zipCode = trim(substr($address,strpos($address,"PA")+3));
+            $zip5 = substr($zipCode, 0, 5);
+            $name_slug = Str::slug($station -> station_name);
+
+            $adjustedCity = ucwords(strtolower($city));
+            $adjustedCounty = ucwords(strtolower($station -> station_county));
+
+        
+            $station -> update([
+                'station_street_address' => $streetAddress,
+                'station_city' => $city,
+                'station_zip_plus_4' => $zipCode,
+                'station_zip' => $zip5,
+                'station_name_slug' => $name_slug,
+                'city' => $adjustedCity,
+                'county'=> $adjustedCounty
+            ]);
+        }
 
     }
 

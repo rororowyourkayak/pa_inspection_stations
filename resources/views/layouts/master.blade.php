@@ -17,9 +17,13 @@
                     <a href="/" class="nav-link text-white">PA Auto Inspection Stations</a>
                 </li>
             </ul>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a href="/stations" class="nav-link text-white">Stations List</a>
+                    <a href="/stations" class="nav-link text-white">Stations</a>
                 </li>
                 <li class="nav-item">
                     <a href="/counties" class="nav-link text-white">Counties</a>
@@ -28,6 +32,7 @@
                     <a href="/cities" class="nav-link text-white">Cities</a>
                 </li>
             </ul>
+            </div>
         </div>
     </nav>
     @yield('content')

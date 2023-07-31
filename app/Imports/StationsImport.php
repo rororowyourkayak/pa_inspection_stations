@@ -11,7 +11,7 @@ class StationsImport implements ToModel, WithHeadingRow
     {
         
         return new Station([
-            'county'=>$row['county'],
+            'station_county'=>$row['county'],
             'station_name'=>$row['station_name'], 
             'ois_number'=>$row['ois_number'], 
             'station_address'=>$row['station_address'], 

@@ -21,12 +21,12 @@ class StationController extends Controller
 
     public function viewCounty($countyNameSlug){
         $county = County::where('county_slug', $countyNameSlug)->first();
+        
         return view('county', ['county' => $county]);
     }
 
     public function viewCounties(){
         $counties = County::orderBy('county','ASC')->paginate(20);
-        
         return view('counties',['counties' => $counties]);
     }
 

@@ -21,7 +21,7 @@
 
 <div class=" col-sm-8 my-4 p-4 bg-white mx-auto text-center ">
     <h2>Vehicle Types Inspected</h2>
-    <p>The table below shows which types of vehicles are inspected by this station.</p>
+    <p>The table below shows which types of vehicles are inspected by this station:</p>
     <table class="table table-response-sm table-striped table-bordered">
         <thead class="table-primary">
             <tr>

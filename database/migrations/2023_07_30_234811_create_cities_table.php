@@ -17,16 +17,21 @@ return new class extends Migration
             $table->id();
             $table->string('city',100);
             $table->string('city_slug',105);
+            $table->string('county', 30);
+            $table->string('county_slug', 35);
+
             $table->unsignedInteger('city_count');
         });
 
-        $counties = Station::select('city')->groupBy('city')->orderBy('city', 'ASC')->get();
+        $cities = Station::select('city','county')->groupBy('city','county')->orderBy('city', 'ASC')->get();
 
-        foreach($counties as $city){
+        foreach($cities as $city){
             City::insert([
                 'city' => $city -> city,
                 'city_slug' => Str::slug($city -> city),
-                'city_count' => Station::where('city', $city -> city)->count()
+                'city_count' => Station::where('city', $city -> city)->count(),
+                'county' => $city -> county,
+                'county_slug' => Str::slug($city -> county)
             ]);
         }
     }

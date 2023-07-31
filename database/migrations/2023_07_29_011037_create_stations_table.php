@@ -38,6 +38,11 @@ return new class extends Migration
             $table->string('station_name_slug', 100)->nullable();
             $table->string('city', 100)->nullable();
             $table->string('county', 30)->nullable();
+            $table->string('county_slug',35)->nullable();
+            $table->string('city_slug',105)->nullable();
+
+            $table->index('county');
+            $table->index('city');
         });
 
         Excel::import(new StationsImport, storage_path('pa_inspection_pg_1_excel.xlsx'));
@@ -50,11 +55,13 @@ return new class extends Migration
             $city = trim(substr($address,strpos($address,",")+1,strpos($address,"PA")-strpos($address,",")-2));
             $zipCode = trim(substr($address,strpos($address,"PA")+3));
             $zip5 = substr($zipCode, 0, 5);
-            $name_slug = Str::slug($station -> station_name);
-
+            
             $adjustedCity = ucwords(strtolower($city));
             $adjustedCounty = ucwords(strtolower($station -> station_county));
 
+            $name_slug = Str::slug($station -> station_name);
+            $city_slug = Str::slug($city);
+            $county_slug = Str::slug($station -> station_county);
         
             $station -> update([
                 'station_street_address' => $streetAddress,
@@ -63,7 +70,9 @@ return new class extends Migration
                 'station_zip' => $zip5,
                 'station_name_slug' => $name_slug,
                 'city' => $adjustedCity,
-                'county'=> $adjustedCounty
+                'county'=> $adjustedCounty,
+                'county_slug'=>$county_slug,
+                'city_slug'=>$city_slug
             ]);
         }
 

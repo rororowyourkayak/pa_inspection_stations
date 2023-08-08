@@ -33,4 +33,6 @@ Route::controller(StationController::class)->group(function(){
 
     Route::get('/cities', 'viewCities');
     Route::get('/cities/{city}', 'viewCity');
+
+    Route::get('/cities_in_county', 'getCitiesInCounty');
 });

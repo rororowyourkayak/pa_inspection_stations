@@ -17,4 +17,8 @@ class City extends Model
         return $this -> hasMany(Station::class, 'city','city');
     }
 
+    public function county() {
+        return $this->belongsTo(County::class);
+    }
+
 }

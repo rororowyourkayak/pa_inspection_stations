@@ -17,4 +17,8 @@ class County extends Model
 
         return $this -> hasMany(Station::class, 'county','county');
     }
+
+    public function cities() : HasMany {
+        return $this ->hasMany(City::class, 'county_id', 'id');
+    }
 }

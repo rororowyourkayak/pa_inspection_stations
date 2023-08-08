@@ -5,6 +5,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Models\City;
 use App\Models\Station;
+use App\Models\County;
+
+
 
 return new class extends Migration
 {
@@ -17,21 +20,18 @@ return new class extends Migration
             $table->id();
             $table->string('city',100);
             $table->string('city_slug',105);
-            $table->string('county', 30);
-            $table->string('county_slug', 35);
-
+            $table->bigInteger('county_id');
             $table->unsignedInteger('city_count');
         });
 
         $cities = Station::select('city','county')->groupBy('city','county')->orderBy('city', 'ASC')->get();
-
+    
         foreach($cities as $city){
             City::insert([
                 'city' => $city -> city,
                 'city_slug' => Str::slug($city -> city),
                 'city_count' => Station::where('city', $city -> city)->count(),
-                'county' => $city -> county,
-                'county_slug' => Str::slug($city -> county)
+                'county_id' => County::where('county',$city -> county)->first()->id
             ]);
         }
     }

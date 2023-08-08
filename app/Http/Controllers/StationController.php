@@ -39,4 +39,15 @@ class StationController extends Controller
         $cities = City::orderBy('city','ASC')->paginate(20);
         return view('cities',['cities' => $cities]);
     }
+
+    public function getCitiesInCounty(){
+
+        $request = request()->validate([
+            'county' => ['required', 'string', 'max: 30']
+        ]);
+
+        $county = County::where('county_slug', $request["county"])->first();
+
+        return response()->json( $county -> cities);
+    }
 }

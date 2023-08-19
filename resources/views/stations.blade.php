@@ -2,16 +2,41 @@
 
 @section('content')
 <style>
-    thead {
-  background-color: #255cb4 !important;
-} 
+    
+  @media screen and (max-width:470px) {
+    #stationTable th {
+        display: none;
+    }
+    #stationTable td {
+        display: block;
+    }
+    #stationTable td:before {
+    font-weight: bold;
+  }
+
+  #stationTable td:nth-of-type(1):before {
+    content: "Station Name: ";
+  }
+  #stationTable td:nth-of-type(2):before {
+    content: "County: ";
+  }
+  #stationTable td:nth-of-type(3):before {
+    content: "City: ";
+  }
+  #stationTable td:nth-of-type(4):before {
+    content: "Phone Number: ";
+  }
+  
+  }
+  
+
 </style>
-<div class="container bg-white my-4 p-4 text-center">
+<div  id="pageContainer" class="container bg-white my-4 p-4 text-center">
     <h1>PA Safety Inspection Stations</h1>
     <p>This page displays of all stations, sorted by station name:</p>
 
-    <div class="container p-4">
-    <table class="table table-response-sm table-striped table-bordered">
+    <div class="table-container col-sm-12 p-4">
+    <table id="stationTable" class="table table-responsive-sm table-striped table-bordered">
         <thead class="table-dark">
             <tr>
                 <th>Station Name</th>

@@ -22,6 +22,7 @@ use App\Http\Controllers\CityController;
 
 Route::controller(MainController::class)->group(function(){
     Route::get('/', 'viewHomePage');
+    Route::get('/contact', 'viewContactPage');
 });
 
 Route::controller(StationController::class)->group(function(){
@@ -35,4 +36,6 @@ Route::controller(StationController::class)->group(function(){
     Route::get('/cities/{city}', 'viewCity');
 
     Route::get('/cities_in_county', 'getCitiesInCounty');
+    Route::get('/stations_in_city', 'getStationsInCity');
+
 });

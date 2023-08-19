@@ -12,13 +12,17 @@ class MainController extends Controller
 {
     public function viewHomePage(){
 
-        $stationsCount = Station::count();
-        $asOf = config('metadata.dataAsOf');
-        
+        $stationsCount = Station::count();    
         return view('home', [
             'stationsCount' => $stationsCount, 
-            'asOf' => $asOf,
             'counties' => County::all(),
+            'title' => 'PA Inspection Stations'
+        ]);
+    }
+
+    public function viewContactPage(){
+        return view('contact', [
+            'title' => 'Contact Us'
         ]);
     }
 }

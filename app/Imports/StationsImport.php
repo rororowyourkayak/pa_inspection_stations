@@ -3,27 +3,27 @@ namespace App\Imports;
 
 use App\Models\Station;
 use Maatwebsite\Excel\Concerns\ToModel;
-//use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use Maatwebsite\Excel\Concerns\SkipsOnError;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class StationsImport implements ToModel/* , WithHeadingRow */, SkipsOnError
+
+class StationsImport implements ToModel, WithHeadingRow 
 {
     public function model(array $row)
     {
         
         return new Station([
-            'station_county'=>$row[0],
-            'station_name'=>$row[1],
-            'ois_number'=>$row[2],
-            'station_address'=>$row[3],
-            'mailing_address'=>$row[4],
-            'phone_number'=>$row[5],
-            'passenger_cars_and_light_trucks'=>$row[6],
-            'medium_trucks'=>$row[7],
-            'heavy_trucks'=>$row[8],
-            'motorcycle'=>$row[9],
-            'trailer_less_10000'=>$row[10],
-            'trailer_greater_10000'=>$row[11],
+            'station_county'=>$row['county'],
+            'station_name'=>$row['station_name'],
+            'ois_number'=>$row['ois_number'],
+            'station_address'=>$row['station_address'],
+            'mailing_address'=>$row['mailing_address'],
+            'phone_number'=>$row['phone_number'],
+            'passenger_cars_and_light_trucks'=>$row['passenger_cars_and_light_trucks'],
+            'medium_trucks'=>$row['medium_trucks'],
+            'heavy_trucks'=>$row['heavy_trucks'],
+            'motorcycle'=>$row['motorcycle'],
+            'trailer_less_10000'=>$row['trailer_less_10000'],
+            'trailer_greater_10000'=>$row['trailer_greater_10000'],
         ]);
     }
     public function onError(\Throwable $e)

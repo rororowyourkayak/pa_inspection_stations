@@ -7,6 +7,8 @@ use Illuminate\Database\Seeder;
 use App\Models\Station;
 use App\Models\City;
 use App\Models\County;
+use Illuminate\Support\Str;
+
 class CitySeeder extends Seeder
 {
     /**
@@ -14,6 +16,8 @@ class CitySeeder extends Seeder
      */
     public function run(): void
     {
+        City::truncate();
+
         $cities = Station::select('city','county')->groupBy('city','county')->orderBy('city', 'ASC')->get();
     
         foreach($cities as $city){

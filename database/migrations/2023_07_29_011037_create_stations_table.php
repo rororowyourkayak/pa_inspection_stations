@@ -19,12 +19,12 @@ return new class extends Migration
             $table->string('station_address', 200);
             $table->string('mailing_address', 200);
             $table->string('phone_number', 15)->nullable();
-            $table->string('passenger_cars_and_light_trucks', 1);
-            $table->string('medium_trucks', 1);
-            $table->string('heavy_trucks', 1);
-            $table->string('motorcycle', 1);
-            $table->string('trailer_less_10000', 1);
-            $table->string('trailer_greater_10000', 1);
+            $table->string('passenger_cars_and_light_trucks', 1)->nullable();
+            $table->string('medium_trucks', 1)->nullable();
+            $table->string('heavy_trucks', 1)->nullable();
+            $table->string('motorcycle', 1)->nullable();
+            $table->string('trailer_less_10000', 1)->nullable();
+            $table->string('trailer_greater_10000', 1)->nullable();
             $table->string('station_street_address', 100)->nullable();
             $table->string('station_city', 100)->nullable();
             $table->string('station_zip', 10)->nullable();

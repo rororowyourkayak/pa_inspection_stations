@@ -19,6 +19,8 @@ class StationSeeder extends Seeder
      */
     public function run(): void
     {
+        Station::truncate();
+        
         Excel::import(new StationsImport, storage_path('stations.xlsx'));
 
         $stations = Station::all();
@@ -26,8 +28,10 @@ class StationSeeder extends Seeder
         foreach($stations as $station){
             $address = $station -> station_address; 
             $streetAddress = trim(substr($address,0,strpos($address,",")));
-            $city = trim(substr($address,strpos($address,",")+1,strpos($address,"PA")-strpos($address,",")-2));
-            $zipCode = trim(substr($address,strpos($address,"PA")+3));
+            $pa_matches = [];
+
+            $city = trim(substr($address,strpos($address,",")+1,strrpos($address,"PA")-strpos($address,",")-2));
+            $zipCode = trim(substr($address,strrpos($address,"PA")+3));
             $zip5 = substr($zipCode, 0, 5);
             
             $adjustedCity = ucwords(strtolower($city));

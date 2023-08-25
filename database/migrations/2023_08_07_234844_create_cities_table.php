@@ -24,16 +24,7 @@ return new class extends Migration
             $table->unsignedInteger('city_count');
         });
 
-        $cities = Station::select('city','county')->groupBy('city','county')->orderBy('city', 'ASC')->get();
-    
-        foreach($cities as $city){
-            City::insert([
-                'city' => $city -> city,
-                'city_slug' => Str::slug($city -> city),
-                'city_count' => Station::where('city', $city -> city)->count(),
-                'county_id' => County::where('county',$city -> county)->first()->id
-            ]);
-        }
+        
     }
 
     /**

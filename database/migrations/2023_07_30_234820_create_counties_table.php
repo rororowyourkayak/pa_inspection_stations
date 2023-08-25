@@ -20,15 +20,7 @@ return new class extends Migration
             $table->unsignedInteger('county_count');
         });
 
-        $counties = Station::select('county')->groupBy('county')->orderBy('county', 'ASC')->get();
-
-        foreach($counties as $county){
-            County::insert([
-                'county' => $county -> county,
-                'county_slug' => Str::slug($county -> county),
-                'county_count' => Station::where('county', $county -> county)->count()
-            ]);
-        }
+        
     }
 
     /**

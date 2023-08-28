@@ -4,7 +4,8 @@
 
     <div class="col-sm-12 mx-auto text-center bg-white py-4 my-4">
         <h1>PA Safety Inspection Centers</h1>
-        <p> As of {{config('metadata.dataAsOf')}}, there are {{$stationsCount}} safety inspection stations in PA.</p>
+        <p>In Pennsylvania, there are <b>{{$stationsCount}}</b> safety inspection stations across <b>{{$citiesCount}}</b> cities across <b>{{$countiesCount}}</b> counties.
+           
     </div>
 
 
@@ -12,8 +13,6 @@
     <div class="card col-sm-10 text-center mx-auto ">
         <div class="card-header custom-blue-bg text-white fw-bold">Inspection Station Finder</div>
         <div class="card-body">
-            
-
             <div class="container">
                 <form id="inspectionFinder" action="">
                     <p id="feedback" class="text-danger"></p>
@@ -21,8 +20,8 @@
                         <label for="countySelect" class="form-label">Select County:</label>
                         <select name="county" id="countySelect" class="form-select">
                             <option selected value=''> -- select a county -- </option>
-                            @foreach ($counties as $county)
-                            <option value="{{$county->county_slug}}"> {{$county->county}} </option>
+                            @foreach ($counties as $county_slug => $county)
+                            <option value="{{$county_slug}}"> {{$county}} </option>
                             @endforeach
                         </select>
                     </div>

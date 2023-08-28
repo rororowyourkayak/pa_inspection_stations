@@ -37,6 +37,7 @@ return new class extends Migration
 
             $table->index('county');
             $table->index('city');
+            $table->index('station_name_slug');
         });
 
         

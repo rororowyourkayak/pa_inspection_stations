@@ -50,7 +50,9 @@
             <p>This site is privately maintained, not affiliated with PennDOT or any other government body.
             <br> Information regarding inspection programs and stations was retrieved from PennDOT.
             <br> All information used on this site is within the public domain. 
+            <br>This site <b>does not</b> provide any legal advice or opinionated information. 
             <br>Data used about stations is as of <b>{{config('metadata.dataAsOf')}}</b>.
+            <br>This site does not guarantee 100% accurate information.
             </p>
         </div>
     

@@ -11,18 +11,20 @@ use App\Models\City;
 class MainController extends Controller
 {
     public function viewHomePage(){
-
-        $stationsCount = Station::count();    
+        
         return view('home', [
-            'stationsCount' => $stationsCount, 
-            'counties' => County::all(),
+            'stationsCount' => Station::count(), 
+            'countiesCount' => County::count(),
+            'citiesCount' => City::count(),
+            'counties' => County::pluck('county', 'county_slug'),
             'title' => 'PA Inspection Stations'
         ]);
     }
 
-    public function viewContactPage(){
+    //add in the contact page later on
+    /* public function viewContactPage(){
         return view('contact', [
             'title' => 'Contact Us'
         ]);
-    }
+    } */
 }

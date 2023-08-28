@@ -20,7 +20,7 @@ class StationController extends Controller
 
     public function viewStations()
     {
-        $stations = Station::orderBy('station_name', 'ASC')->paginate(20);
+        $stations = Station::orderBy('station_name', 'ASC')->paginate(10);
         return view('stations', ['stations' => $stations,
             'title' => 'Inspection Stations',
         ]);
@@ -37,7 +37,7 @@ class StationController extends Controller
 
     public function viewCounties()
     {
-        $counties = County::orderBy('county', 'ASC')->paginate(20);
+        $counties = County::orderBy('county', 'ASC')->paginate(10);
         return view('counties', ['counties' => $counties,
             'title' => 'Counties',
         ]);
@@ -53,7 +53,7 @@ class StationController extends Controller
 
     public function viewCities()
     {
-        $cities = City::orderBy('city', 'ASC')->paginate(20);
+        $cities = City::orderBy('city', 'ASC')->paginate(10);
         return view('cities', ['cities' => $cities,
             'title' => 'Cities',
         ]);

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container bg-white my-4 p-4 text-center">
+<div class="col-sm-8 bg-white my-4 p-4 text-center mx-auto">
     <h1>PA Inspection Counties</h1>
     <p>Below are the counties of PA and their inspection stations counts.
         <br> Clicking on a county name will take you to a more detailed page about that county.
@@ -27,6 +27,7 @@
                 
             </tbody>
         </table>
+        {{$counties -> links('pagination::bootstrap-5')}}
     </div>
 </div>
 

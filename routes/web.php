@@ -22,7 +22,7 @@ use App\Http\Controllers\CityController;
 
 Route::controller(MainController::class)->group(function(){
     Route::get('/', 'viewHomePage');
-    Route::get('/contact', 'viewContactPage');
+    //Route::get('/contact', 'viewContactPage');
 });
 
 Route::controller(StationController::class)->group(function(){

@@ -12,7 +12,10 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@vitejs/plugin-vue": "^4.3.3",
         "bootstrap": "^5.3.1",
-        "jquery": "^3.7.0"
+        "jquery": "^3.7.0",
+        "vue": "^3.2.36",
+        "vue-loader": "^17.2.2"
     }
 }

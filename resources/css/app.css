@@ -1,5 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Manrope:wght@500&display=swap');
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
 
 .noto{font-family: 'Noto Sans', sans-serif;}
 .custom-font, .nav-link {font-family: 'Manrope', sans-serif;}

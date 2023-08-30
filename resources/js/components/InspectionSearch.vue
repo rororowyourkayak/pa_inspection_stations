@@ -1,28 +1,77 @@
 <template>
-    <div class="card col-sm-10 text-center mx-auto my-4">
-        <div class="card-header custom-blue-bg text-white fw-bold">Inspection Station Search</div>
-        <div class="card-body">
-            <div class="col-sm-8 mx-auto">
-                <div class="input-group">
-                    <span>
-                        <select v-model="searchType" class="input-group-text" name="searchType" id="searchType" @change="changePlaceholderText" >
-                            <option selected value="station">Station</option>
-                            <option value="county">County</option>
-                            <option value="city">City</option>
+    <div class="col-sm-10 mx-auto bg-white my-4 p-4 text-center shadow">
+        <h2>Inspection Search Tool</h2>
+        <p>Use this tool to search for a station, county or city, up to 20 characters.
+            <br>To change between search type, use the dropdown to change.
+            <br> After typing your query, hit the search icon to run the search.
+        </p>
+        <div class="col-sm-10 mx-auto">
 
-                        </select>
-                    </span>
-                    <input type="text" name="searchInput" id="searchInput" maxlength="20" class="form-control"
-                    :placeholder="placeholderText">
-                    <button type="button" class="input-group-text" id="searchBtn"> 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                        </svg>
-                    </button>
-                </div>
+            <div class="input-group">
+                <span>
+                    <select v-model="searchType" class="input-group-text" name="searchType" id="searchType"
+                        @change="changePlaceholderText">
+                        <option selected value="name">Name</option>
+                        <option value="county">County</option>
+                        <option value="city">City</option>
+
+                    </select>
+                </span>
+                <input v-model="searchText" type="text" name="searchInput" id="searchInput" maxlength="20"
+                    class="form-control" :placeholder="placeholderText">
+                <button type="button" class="input-group-text" id="searchBtn" @click="submitSearch">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                    </svg>
+                </button>
             </div>
-            <div id="resultDisplay" class="col-sm-8 mx-auto my-2">
 
+        </div>
+        <div id="resultDisplay" class="col-sm-10 mx-auto my-4">
+            <div v-if="searchIsLoading">
+                <div class="spinner-border spinner-border-sm"></div> Loading...
+            </div>
+            <div v-else>
+                <div v-if="responseError" class="alert alert-danger container text-center mx-auto my-4">
+                    {{ responseError }}
+                </div>
+                <div v-else-if="resultData.emptyResult" id="emptyMessageBox"
+                    class="alert alert-danger container text-center mx-auto my-4">No results from search. Try changing your
+                    search
+                    text.</div>
+                <div v-else-if="resultData.result">
+                    <div class="alert alert-success container text-center mx-auto my-4">
+                        <b>{{ resultData.result.length }}</b> results matched your search!
+                    </div>
+                    <div>
+                        <table class="table table-response-sm table-striped table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Station Name</th>
+                                    <th>County</th>
+                                    <th>City</th>
+                                    <th>Phone Number</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="result in resultData.result">
+
+                                    <td><a class="text-dark" :href="'/stations/' + result.station_name_slug">{{
+                                        result.station_name }}</a>
+                                    </td>
+                                    <td><a class="text-dark" :href="'/counties/' + result.county_slug">{{ result.county
+                                    }}</a></td>
+                                    <td><a class="text-dark" :href="'/cities/' + result.city_slug">{{ result.city }}</a>
+                                    </td>
+                                    <td>{{ result.phone_number }}</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -35,29 +84,50 @@ export default {
     data: () => {
         return {
             placeholderText: 'Search for a station...',
-            searchType: 'station',
+            searchType: 'name',
+            searchText: '',
+            resultData: {
+                emptyResult: null,
+                result: null,
+                type: null,
+                error: null
+            },
+            responseError: '',
+            searchIsLoading: false,
+
         }
     },
     methods: {
-
-         changePlaceholderText(){
+        log: console.log,
+        changePlaceholderText() {
             this.placeholderText = 'Search for a ' + this.searchType + '...';
-        }
+        },
 
+        submitSearch() {
+            this.responseError = '';
+            this.resultData.emptyResult = null;
+            this.resultData.results = null;
+            this.resultData.type = null;
+            this.resultData.error = null;
+
+            this.searchIsLoading = true;
+            axios.get('/search', {
+                params: {
+                    search: this.searchText,
+                    type: this.searchType
+                }
+            }).then(response => {
+                this.searchIsLoading = false;
+                this.resultData = response.data;
+            })
+                .catch(error => {
+                    this.searchIsLoading = false;
+                    this.responseError = 'A system error has occurred. Please try again later.';
+                });
+        },
     }
 }
 </script>
 
 <style></style>
 
-<!-- axios.get('', {
-    params: {
-      
-    }
-  }).then(
-    response => {
-     
-    })
-    .catch(error => {
-      
-    }); -->

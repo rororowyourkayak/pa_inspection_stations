@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="col-sm-8 mx-auto bg-white my-4 p-4 text-center">
+<div class="col-sm-8 mx-auto bg-white my-4 p-4 text-center shadow">
     <h1>PA Inspection Cities</h1>
     <p>Below are the cities of PA and their inspection stations counts.
         <br> Clicking on a city name will take you to a more detailed page about that city.

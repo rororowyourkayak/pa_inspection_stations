@@ -1,12 +1,13 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="col-sm-8 bg-white my-4 p-4 text-center mx-auto">
+
+<div class="col-sm-8 bg-white my-4 p-4 text-center mx-auto shadow">
     <h1>PA Inspection Counties</h1>
     <p>Below are the counties of PA and their inspection stations counts.
         <br> Clicking on a county name will take you to a more detailed page about that county.
     </p>
-
+    
     <div class="container">
         <table class="table table-response-sm  table-bordered">
             <thead>

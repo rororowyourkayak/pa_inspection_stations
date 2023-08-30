@@ -16,6 +16,9 @@
             <p>{{$station->ois_number}}</p>
         </div>
     </div>
+    <div class="row mt-4">
+        <a class="btn btn-primary col-sm-4 mx-auto" href ='https://www.google.com/search?q={{$searchQuery}}' target="_blank">Search on Google</a>
+    </div>
 </div>
 
 

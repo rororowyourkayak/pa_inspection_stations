@@ -31,7 +31,7 @@
   
 
 </style>
-<div  id="pageContainer" class="container bg-white my-4 p-4 text-center">
+<div  id="pageContainer" class="container bg-white my-4 p-4 text-center shadow">
     <h1>PA Safety Inspection Stations</h1>
     <p>This page displays of all stations, sorted by station name:</p>
 

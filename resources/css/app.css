@@ -1,6 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Manrope:wght@500&display=swap');
-@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 .noto{font-family: 'Noto Sans', sans-serif;}
 .custom-font, .nav-link {font-family: 'Manrope', sans-serif;}
@@ -10,14 +10,14 @@ body{
 }
 
 .custom-blue-bg{
-  background-color: #0014a8;
+  background-color: #0019d4;
 }
 
 /* .nav-item:hover{
   background-color: rgb(0, 118, 26);
 } */                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
- thead {
-  background-color: #255cb4 !important;
+.other-custom-blue-bg{
+  background-color: #394c6b !important;
 } 
 
 

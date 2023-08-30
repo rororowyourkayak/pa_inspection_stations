@@ -12,9 +12,19 @@ class StationController extends Controller
     public function viewStation($stationNameSlug)
     {
         $station = Station::where('station_name_slug', $stationNameSlug)->first();
+
+        $station_name = $station -> station_name;
+        $station_name_pieces = explode(' ', $station_name);
+        $search_query = implode('+', $station_name_pieces);
+
+        $station_city = $station -> city;
+        $station_city_pieces = explode(' ', $station_city);
+        $search_query .= '+' . implode('+', $station_city_pieces) . ',+PA';
+
         return view('station',
             ['station' => $station,
                 'title' => $station->station_name,
+                'searchQuery' => $search_query,
             ]);
     }
 

@@ -37,27 +37,8 @@ class MainController extends Controller
         $searchText = $info['search'];
         $searchType = $info['type'];
     
-
-        switch($searchType){
-
-            case 'station':
-                $query = Station::where('station_name', 'LIKE', "%$searchText%");
-                break;
-
-            case 'county':
-                $query = County::where('county', 'LIKE', "%$searchText%");
-                break;
-
-            case 'city':
-                $query = City::where('city', 'LIKE', "%$searchText%");
-                break;
-            
-            default:
-                $result = [];
-                break;
-
-        }
-
+        $query = Station::where('station_'.$searchType, 'LIKE', "$searchText%")->orderBy('station_'.$searchType, 'ASC');
+        
         try{
             $result = $query -> get();
             //change this exception type later

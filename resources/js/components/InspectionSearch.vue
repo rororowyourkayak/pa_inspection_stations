@@ -19,7 +19,7 @@
                 </span>
                 <input v-model="searchText" type="text" name="searchInput" id="searchInput" maxlength="20"
                     class="form-control" :placeholder="placeholderText">
-                <button type="button" class="input-group-text" id="searchBtn" @click="submitSearch">
+                <button type="button" class="input-group-text" id="searchBtn" @click="submitSearch" :disabled="searchIsLoading">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
                         viewBox="0 0 16 16">
                         <path
@@ -34,10 +34,7 @@
                 <div class="spinner-border spinner-border-sm"></div> Loading...
             </div>
             <div v-else>
-                <div v-if="responseError" class="alert alert-danger container text-center mx-auto my-4">
-                    {{ responseError }}
-                </div>
-                <div v-else-if="resultData.emptyResult" id="emptyMessageBox"
+                <div v-if="resultData.emptyResult" id="emptyMessageBox"
                     class="alert alert-danger container text-center mx-auto my-4">No results from search. Try changing your
                     search
                     text.</div>
@@ -80,38 +77,57 @@
 <script>
 
 export default {
-
+    props: ['stations'],
     data: () => {
         return {
-            placeholderText: 'Search for a station...',
+            placeholderText: 'Search by name...',
             searchType: 'name',
             searchText: '',
             resultData: {
                 emptyResult: null,
                 result: null,
-                type: null,
-                error: null
             },
-            responseError: '',
             searchIsLoading: false,
 
         }
     },
     methods: {
-        log: console.log,
+        
         changePlaceholderText() {
-            this.placeholderText = 'Search for a ' + this.searchType + '...';
+            this.placeholderText = 'Search by ' + this.searchType + '...';
         },
 
         submitSearch() {
-            this.responseError = '';
+            this.searchIsLoading = true;
+            this.resultData.emptyResult = null;
+            this.resultData.results = null;
+            
+            var search = this.searchText.toLowerCase(); //make lowercase for begins with matching
+            var type = this.searchType;
+            var results = [];
+            if(type == 'name'){ type = 'station_name'; }
+            this.stations.forEach((station) => {
+                var value = station[type].toLowerCase();
+                if(value.startsWith(search)){
+                    results.push(station);
+                }
+            });
+
+            if(results.length == 0){
+                this.resultData.emptyResult = true;
+            }
+            else{
+                this.resultData.result = results;
+                this.resultData.type = type;
+            }
+            /* this.responseError = '';
             this.resultData.emptyResult = null;
             this.resultData.results = null;
             this.resultData.type = null;
             this.resultData.error = null;
 
             this.searchIsLoading = true;
-            axios.get('/search', {
+            axios.get('/searchTool', {
                 params: {
                     search: this.searchText,
                     type: this.searchType
@@ -123,7 +139,8 @@ export default {
                 .catch(error => {
                     this.searchIsLoading = false;
                     this.responseError = 'A system error has occurred. Please try again later.';
-                });
+                }); */
+            this.searchIsLoading = false;
         },
     }
 }

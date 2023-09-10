@@ -15,6 +15,7 @@ class StationController extends Controller
 
         $station_name = $station -> station_name;
         $station_name_pieces = explode(' ', $station_name);
+        if($station_name_pieces[0][0] == '#'){unset($station_name_pieces[0]);}
         $search_query = implode('+', $station_name_pieces);
 
         $station_city = $station -> city;

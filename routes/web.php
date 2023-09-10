@@ -22,7 +22,8 @@ use App\Http\Controllers\CityController;
 
 Route::controller(MainController::class)->group(function(){
     Route::get('/', 'viewHomePage');
-    Route::get('/search', 'processSearch');
+    Route::get('/search', 'viewSearchPage');
+    //Route::get('/searchTool', 'processSearch');
     //Route::get('/contact', 'viewContactPage');
 });
 

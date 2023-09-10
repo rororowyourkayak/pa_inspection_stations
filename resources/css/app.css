@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Manrope:wght@500&display=swap');
 @import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
+
 .noto{font-family: 'Noto Sans', sans-serif;}
 .custom-font, .nav-link {font-family: 'Manrope', sans-serif;}
 
@@ -20,4 +21,8 @@ body{
   background-color: #394c6b !important;
 } 
 
-
+@media screen and (max-width: 576px) {
+  #googleSearchBtn{
+    width: 75%;
+  }
+}

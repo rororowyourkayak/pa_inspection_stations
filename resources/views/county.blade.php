@@ -1,5 +1,7 @@
 @extends('layouts.master')
-
+@section('meta')
+<meta type="description" content="View inspection stations in {{$county -> county}} county.">
+@endsection
 @section('content')
 
 <div class="col-sm-8 text-center mx-auto bg-white my-4 p-4">

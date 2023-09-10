@@ -17,12 +17,18 @@ class MainController extends Controller
             'stationsCount' => Station::count(), 
             'countiesCount' => County::count(),
             'citiesCount' => City::count(),
-            'counties' => County::pluck('county', 'county_slug'),
             'title' => 'PA Inspection Stations'
         ]);
     }
 
-    public function processSearch(){
+    public function viewSearchPage(){
+        return view('search',[
+            'stations' => Station::all(),
+            'title' => 'Inspection Search',
+        ]);
+    }
+
+    /* public function processSearch(){
     
         $validator = Validator::make(request()->input(), [
             'search' => ['string', 'nullable', 'max:20'],
@@ -57,9 +63,9 @@ class MainController extends Controller
     }
 
     //add in the contact page later on
-    /* public function viewContactPage(){
+    public function viewContactPage(){
         return view('contact', [
             'title' => 'Contact Us'
         ]);
-    } */
+    } */ 
 }

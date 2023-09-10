@@ -1,36 +1,11 @@
 @extends('layouts.master')
 
+@section('meta')
+<meta type="description" content="View a list of all the PA inspection stations.">
+@endsection
+
 @section('content')
-<style>
-    
-  @media screen and (max-width:470px) {
-    #stationTable th {
-        display: none;
-    }
-    #stationTable td {
-        display: block;
-    }
-    #stationTable td:before {
-    font-weight: bold;
-  }
 
-  #stationTable td:nth-of-type(1):before {
-    content: "Station Name: ";
-  }
-  #stationTable td:nth-of-type(2):before {
-    content: "County: ";
-  }
-  #stationTable td:nth-of-type(3):before {
-    content: "City: ";
-  }
-  #stationTable td:nth-of-type(4):before {
-    content: "Phone Number: ";
-  }
-  
-  }
-  
-
-</style>
 <div  id="pageContainer" class="container bg-white my-4 p-4 text-center shadow">
     <h1>PA Safety Inspection Stations</h1>
     <p>This page displays of all stations, sorted by station name:</p>

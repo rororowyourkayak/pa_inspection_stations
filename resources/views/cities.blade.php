@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('meta')
+<meta type="description" content="View cities across PA with inspection stations.">
+@endsection
+
 @section('content')
 <div class="col-sm-8 mx-auto bg-white my-4 p-4 text-center shadow">
     <h1>PA Inspection Cities</h1>

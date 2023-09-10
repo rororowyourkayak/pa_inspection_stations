@@ -1,5 +1,7 @@
 @extends('layouts.master')
-
+@section('meta')
+<meta type="description" content="View information about {{$station->station_name}}.">
+@endsection
 @section('content')
 
 <div class=" col-sm-8 my-4 py-4 bg-white mx-auto text-center">
@@ -17,7 +19,7 @@
         </div>
     </div>
     <div class="row mt-4">
-        <a class="btn btn-primary col-sm-4 mx-auto" href ='https://www.google.com/search?q={{$searchQuery}}' target="_blank">Search on Google</a>
+        <a id="googleSearchBtn" class="btn btn-primary col-sm-4 mx-auto" href ='https://www.google.com/search?q={{$searchQuery}}' target="_blank">Search on Google</a>
     </div>
 </div>
 

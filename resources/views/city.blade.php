@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 
-<div class="col-sm-8 text-center mx-auto bg-white my-4 p-4">
+<div class="col-sm-8 text-center mx-auto bg-white my-4 p-4 shadow">
     <h1>Stations in {{$city -> city}}, PA </h1>
     <p>There are {{$city -> city_count}} inspection stations in {{$city -> city}}.
     <br>{{$city -> city}} is within <a class="text-black" href="/counties/{{$city->county->county_slug}}">{{$city -> county ->county}} County.</a>

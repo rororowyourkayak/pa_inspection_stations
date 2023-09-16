@@ -7,6 +7,9 @@
         </p>
         <div class="col-sm-10 mx-auto">
 
+            <p v-if="emptyText" class="text-danger text-center my-2">
+                Please enter at least one character to search.
+            </p>
             <div class="input-group">
                 <span>
                     <select v-model="searchType" class="input-group-text" name="searchType" id="searchType"
@@ -19,7 +22,8 @@
                 </span>
                 <input v-model="searchText" type="text" name="searchInput" id="searchInput" maxlength="20"
                     class="form-control" :placeholder="placeholderText">
-                <button type="button" class="input-group-text" id="searchBtn" @click="submitSearch" :disabled="searchIsLoading">
+                <button type="button" class="input-group-text" id="searchBtn" @click="submitSearch"
+                    :disabled="searchIsLoading">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
                         viewBox="0 0 16 16">
                         <path
@@ -88,63 +92,73 @@ export default {
                 result: null,
             },
             searchIsLoading: false,
+            emptyText: false,
 
         }
     },
     methods: {
-        
+
         changePlaceholderText() {
             this.placeholderText = 'Search by ' + this.searchType + '...';
         },
 
         submitSearch() {
-            this.searchIsLoading = true;
-            this.resultData.emptyResult = null;
-            this.resultData.results = null;
             
-            var search = this.searchText.toLowerCase(); //make lowercase for begins with matching
-            var type = this.searchType;
-            var results = [];
-            if(type == 'name'){ type = 'station_name'; }
-            this.stations.forEach((station) => {
-                var value = station[type].toLowerCase();
-                if(value.startsWith(search)){
-                    results.push(station);
-                }
-            });
-
-            if(results.length == 0){
-                this.resultData.emptyResult = true;
-            }
-            else{
-                this.resultData.result = results;
-                this.resultData.type = type;
-            }
-            /* this.responseError = '';
             this.resultData.emptyResult = null;
-            this.resultData.results = null;
-            this.resultData.type = null;
-            this.resultData.error = null;
+            this.resultData.result = null;
+            if (this.searchText.length == 0) {
+                this.emptyText = true;
+            }
+            else {
+                this.searchIsLoading = true;
+                this.emptyText = false;
+                
 
-            this.searchIsLoading = true;
-            axios.get('/searchTool', {
-                params: {
-                    search: this.searchText,
-                    type: this.searchType
+                var search = this.searchText.toLowerCase(); //make lowercase for begins with matching
+                var type = this.searchType;
+                var results = [];
+                if (type == 'name') { type = 'station_name'; }
+                this.stations.forEach((station) => {
+                    var value = station[type].toLowerCase();
+                    if (value.startsWith(search)) {
+                        results.push(station);
+                    }
+                });
+
+                if (results.length == 0) {
+                    this.resultData.emptyResult = true;
                 }
-            }).then(response => {
-                this.searchIsLoading = false;
-                this.resultData = response.data;
-            })
-                .catch(error => {
+                else {
+                    this.resultData.result = results;
+                    this.resultData.type = type;
+                }
+                /* this.responseError = '';
+                this.resultData.emptyResult = null;
+                this.resultData.results = null;
+                this.resultData.type = null;
+                this.resultData.error = null;
+    
+                this.searchIsLoading = true;
+                axios.get('/searchTool', {
+                    params: {
+                        search: this.searchText,
+                        type: this.searchType
+                    }
+                }).then(response => {
                     this.searchIsLoading = false;
-                    this.responseError = 'A system error has occurred. Please try again later.';
-                }); */
-            this.searchIsLoading = false;
+                    this.resultData = response.data;
+                })
+                    .catch(error => {
+                        this.searchIsLoading = false;
+                        this.responseError = 'A system error has occurred. Please try again later.';
+                    }); */
+                this.searchIsLoading = false;
+            }
         },
-    }
+    },
+    
 }
 </script>
 
-<style></style>
+
 

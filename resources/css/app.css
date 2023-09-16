@@ -11,7 +11,14 @@ body{
 }
 
 .custom-blue-bg{
-  background-color: #0019d4;
+  background-color: #0073c0;
+}
+
+.custom-green-bg{
+  background-color: rgb(20, 94, 24);
+}
+.custom-yellow-text{
+  color: rgb(255, 208, 0);
 }
 
 /* .nav-item:hover{

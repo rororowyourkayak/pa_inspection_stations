@@ -2,10 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
-
 use App\Http\Controllers\StationController;
-use App\Http\Controllers\CountyController;
-use App\Http\Controllers\CityController;
 
 
 
@@ -24,7 +21,6 @@ Route::controller(MainController::class)->group(function(){
     Route::get('/', 'viewHomePage');
     Route::get('/search', 'viewSearchPage');
     //Route::get('/searchTool', 'processSearch');
-    //Route::get('/contact', 'viewContactPage');
 });
 
 Route::controller(StationController::class)->group(function(){

@@ -1,11 +1,11 @@
 <template>
-    <div class="col-sm-10 mx-auto bg-white my-4 p-4 text-center shadow">
+    <div class="col-sm-8 mx-auto bg-white my-4 p-4 text-center shadow">
         <h2>Inspection Search Tool</h2>
         <p>Use this tool to search for a station, county or city, up to 20 characters.
             <br>To change between search type, use the dropdown to change.
             <br> After typing your query, hit the search icon to run the search.
         </p>
-        <div class="col-sm-10 mx-auto">
+        <div class="col-sm-12 mx-auto">
 
             <p v-if="emptyText" class="text-danger text-center my-2">
                 Please enter at least one character to search.
@@ -34,6 +34,8 @@
 
         </div>
         <div id="resultDisplay" class="col-sm-10 mx-auto my-4">
+            <div v-if="errorOccurred" class="alert alert-danger container text-center mx-auto my-4"> Unexpected error has
+                occurred. We are working on fixing it.</div>
             <div v-if="searchIsLoading">
                 <div class="spinner-border spinner-border-sm"></div> Loading...
             </div>
@@ -47,7 +49,7 @@
                         <b>{{ resultData.result.length }}</b> results matched your search!
                     </div>
                     <div>
-                        <table class="table table-response-sm table-striped table-bordered">
+                        <table id="searchTable" class="table table-response-sm table-striped table-bordered mx-auto">
                             <thead class="table-dark">
                                 <tr>
                                     <th>Station Name</th>
@@ -81,9 +83,10 @@
 <script>
 
 export default {
-    props: ['stations'],
+
     data: () => {
         return {
+            stations: null,
             placeholderText: 'Search by name...',
             searchType: 'name',
             searchText: '',
@@ -93,6 +96,7 @@ export default {
             },
             searchIsLoading: false,
             emptyText: false,
+            errorOccurred: false,
 
         }
     },
@@ -103,62 +107,76 @@ export default {
         },
 
         submitSearch() {
-            
-            this.resultData.emptyResult = null;
-            this.resultData.result = null;
-            if (this.searchText.length == 0) {
-                this.emptyText = true;
-            }
+            if (this.stations == null) {
+                this.errorOccurred = true;
+            } 
             else {
-                this.searchIsLoading = true;
-                this.emptyText = false;
-                
-
-                var search = this.searchText.toLowerCase(); //make lowercase for begins with matching
-                var type = this.searchType;
-                var results = [];
-                if (type == 'name') { type = 'station_name'; }
-                this.stations.forEach((station) => {
-                    var value = station[type].toLowerCase();
-                    if (value.startsWith(search)) {
-                        results.push(station);
-                    }
-                });
-
-                if (results.length == 0) {
-                    this.resultData.emptyResult = true;
+                this.errorOccurred = false;
+                this.resultData.emptyResult = null;
+                this.resultData.result = null;
+                if (this.searchText.length == 0) {
+                    this.emptyText = true;
                 }
                 else {
-                    this.resultData.result = results;
-                    this.resultData.type = type;
-                }
-                /* this.responseError = '';
-                this.resultData.emptyResult = null;
-                this.resultData.results = null;
-                this.resultData.type = null;
-                this.resultData.error = null;
-    
-                this.searchIsLoading = true;
-                axios.get('/searchTool', {
-                    params: {
-                        search: this.searchText,
-                        type: this.searchType
+                    this.searchIsLoading = true;
+                    this.emptyText = false;
+
+
+                    var search = this.searchText.toLowerCase(); //make lowercase for begins with matching
+                    var type = this.searchType;
+                    var results = [];
+                    if (type == 'name') { type = 'station_name'; }
+                    this.stations.forEach((station) => {
+                        var value = station[type].toLowerCase();
+                        if (value.startsWith(search)) {
+                            results.push(station);
+                        }
+                    });
+
+                    if (results.length == 0) {
+                        this.resultData.emptyResult = true;
                     }
-                }).then(response => {
+                    else {
+                        this.resultData.result = results;
+                        this.resultData.type = type;
+                    }
                     this.searchIsLoading = false;
-                    this.resultData = response.data;
-                })
-                    .catch(error => {
-                        this.searchIsLoading = false;
-                        this.responseError = 'A system error has occurred. Please try again later.';
-                    }); */
-                this.searchIsLoading = false;
+                }
             }
         },
     },
-    
+    beforeMount() {
+        axios.get('/api/stations').then(response =>{
+                this.stations = response['data']['stations'];
+        })
+    }
 }
 </script>
+<style>
+@media screen and (max-width: 860px){
+    #searchTable th, #searchTable thead{
+        display: none;
+    }
+    #searchTable td {
+        display: block;
+    }
 
+    #searchTable ::before{
+        font-weight: bold;
+    }
+    #searchTable td:nth-of-type(1):before{
+        content: 'Station Name: ';
+    }
+    #searchTable td:nth-of-type(2):before{
+        content: 'County: ';
+    }
+    #searchTable td:nth-of-type(3):before{
+        content: 'City: ';
+    }
+    #searchTable td:nth-of-type(4):before{
+        content: 'Phone Number: ';
+    }
+}
+</style>
 
 

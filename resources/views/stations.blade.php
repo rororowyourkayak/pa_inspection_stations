@@ -6,12 +6,12 @@
 
 @section('content')
 
-<div  id="pageContainer" class="container bg-white my-4 p-4 text-center shadow">
+<div  id="pageContainer" class="container col-sm-8 bg-white my-4 p-4 text-center shadow">
     <h1>PA Safety Inspection Stations</h1>
     <p>This page displays of all stations, sorted by station name:</p>
 
     <div class="table-container col-sm-12 p-4">
-    <table id="stationTable" class="table table-responsive-sm table-striped table-bordered">
+    <table id="stationsTable" class="table table-responsive-sm table-striped table-bordered">
         <thead class="table-dark">
             <tr>
                 <th>Station Name</th>
@@ -35,4 +35,34 @@
 </div>
 
 </div>
+@endsection
+
+@section('scripts')
+    <style>
+
+@media screen and (max-width: 650px) {
+    #stationsTable th, #stationsTable thead{
+        display: none;
+    }
+    #stationsTable td {
+        display: block;
+    }
+
+    #stationsTable ::before{
+        font-weight: bold;
+    }
+    #stationsTable td:nth-of-type(1):before{
+        content: 'Station Name: ';
+    }
+    #stationsTable td:nth-of-type(2):before{
+        content: 'County: ';
+    }
+    #stationsTable td:nth-of-type(3):before{
+        content: 'City: ';
+    }
+    #stationsTable td:nth-of-type(4):before{
+        content: 'Phone Number: ';
+    }
+}
+    </style>
 @endsection

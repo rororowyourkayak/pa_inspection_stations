@@ -6,5 +6,5 @@
 
 @section('content')
 
-<div id="tool"> <inspection-search :stations='{{$stations}}'></inspection-search> </div>
+<div id="tool"> <inspection-search {{-- :stations='{{$stations}}' --}}></inspection-search> </div>
 @endsection

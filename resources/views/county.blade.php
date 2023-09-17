@@ -9,7 +9,7 @@
     <p>There are {{$county -> county_count}} inspection stations in {{$county -> county}} county.</p>
 
     <div class="container my-4">
-        <table class="table table-response-sm table-striped table-bordered">
+        <table id="countyTable" class="table table-response-sm table-striped table-bordered">
             <thead class="table-dark">
                 <tr>
                     <th>Station</th>
@@ -32,4 +32,30 @@
 </div>
 
 
+@endsection
+
+@section('scripts')
+<style>
+@media screen and (max-width: 650px){
+#countyTable th, #countyTable thead{
+    display: none;
+}
+#countyTable td {
+    display: block;
+}
+
+#countyTable ::before{
+    font-weight: bold;
+}
+#countyTable td:nth-of-type(1):before{
+    content: 'Station Name: ';
+}
+#countyTable td:nth-of-type(2):before{
+    content: 'City: ';
+}
+#countyTable td:nth-of-type(3):before{
+    content: 'Phone Number: ';
+}
+}
+</style>
 @endsection

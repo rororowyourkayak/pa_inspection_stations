@@ -23,11 +23,16 @@ class MainController extends Controller
 
     public function viewSearchPage(){
         return view('search',[
-            'stations' => Station::all(),
+           // 'stations' =>cache('stations')/*  Station::all() */,
             'title' => 'Inspection Search',
         ]);
     }
 
+    public function getStations(){
+        return response()->json(['stations' => cache('stations')]);
+    }
+
+    //search api functionality is not currently in use but may be useful later
     /* public function processSearch(){
     
         $validator = Validator::make(request()->input(), [
@@ -61,11 +66,5 @@ class MainController extends Controller
             'type' => $searchType,
         ]);
     }
-
-    //add in the contact page later on
-    public function viewContactPage(){
-        return view('contact', [
-            'title' => 'Contact Us'
-        ]);
-    } */ 
+    */
 }

@@ -39,7 +39,7 @@
                     <a href="/cities" class="nav-link text-white">Cities</a>
                 </li>
                 <li class="nav-item ">
-                    <a href="/search" class="nav-link custom-yellow-text">Search Tool</a>
+                    <a href="/search" class="nav-link custom-yellow-text">Station Finder</a>
                 </li>
             </ul>
             </div>
@@ -53,7 +53,7 @@
             <p>This site is privately maintained, not affiliated with PennDOT or any other government body.
             <br> Information regarding inspection programs and stations was retrieved from PennDOT.
             <br> All information used on this site is within the public domain. 
-            <br>This site <b>does not</b> provide any legal advice. This site does not guarantee 100% accurate information.
+            <br>This site does not guarantee 100% accurate information.
             <br>Data used about stations is as of <b>{{config('metadata.dataAsOf')}}</b>. 
             
             </p>

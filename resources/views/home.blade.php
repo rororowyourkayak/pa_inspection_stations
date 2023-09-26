@@ -12,7 +12,7 @@
             <br> Using the navigation above, you may view links to find specific stations by name, as well as counties and cities.
             <br> Our built-in search tool allows you to search for a stations by name, county, or city. 
         </p>
-        <h3 ><a href="/search" >Go to Search Tool>></a></h3>
+        <h3 ><a href="/search" >Go to Station Finder>></a></h3>
 
         
            

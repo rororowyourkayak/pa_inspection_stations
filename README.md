@@ -1,3 +1,3 @@
-# PA Inspection Centers
+# PA Inspection Stations
 
-This project serves to deliver information about safety inspection centers in PA.
+This project serves to deliver information about safety inspection stations in PA.

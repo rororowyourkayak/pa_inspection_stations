@@ -70,27 +70,4 @@ class StationController extends Controller
         ]);
     }
 
-    public function getCitiesInCounty()
-    {
-
-        $request = request()->validate([
-            'county' => ['required', 'string', 'max: 30'],
-        ]);
-
-        $county = County::where('county_slug', $request["county"])->first();
-
-        return response()->json($county->cities);
-    }
-
-    public function getStationsIncity()
-    {
-
-        $request = request()->validate([
-            'city' => ['required', 'string', 'max: 30'],
-        ]);
-
-        $city = City::where('city_slug', $request["city"])->first();
-
-        return response()->json($city->stations);
-    }
 }

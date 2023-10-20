@@ -21,7 +21,7 @@
                     </select>
                 </span>
                 <input v-model="searchText" type="text" name="searchInput" id="searchInput" maxlength="20"
-                    class="form-control" :placeholder="placeholderText">
+                    class="form-control" :placeholder="placeholderText" @keypress.enter="submitSearch">
                 <button type="button" class="input-group-text" id="searchBtn" @click="submitSearch"
                     :disabled="searchIsLoading">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
@@ -49,30 +49,24 @@
                         <b>{{ resultData.result.length }}</b> results matched your search!
                     </div>
                     <div>
-                        <table id="searchTable" class="table table-response-sm table-striped table-bordered mx-auto">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th>Station Name</th>
-                                    <th>County</th>
-                                    <th>City</th>
-                                    <th>Phone Number</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="result in resultData.result">
-
-                                    <td><a class="text-dark" :href="'/stations/' + result.station_name_slug">{{
-                                        result.station_name }}</a>
-                                    </td>
-                                    <td><a class="text-dark" :href="'/counties/' + result.county_slug">{{ result.county
-                                    }}</a></td>
-                                    <td><a class="text-dark" :href="'/cities/' + result.city_slug">{{ result.city }}</a>
-                                    </td>
-                                    <td>{{ result.phone_number }}</td>
-
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div @click.self="redirectStation" v-for="result in resultData.result" class="col-sm-10 mx-auto bg-white my-4 p-4 text-center shadow border border-1 border-primary rounded">
+                            <p>Station: 
+                                <a class="text-dark" :href="'/stations/' + result.station_name_slug">{{
+                                    result.station_name }}</a>
+                            </p>
+                            <p>
+                                County:
+                                <a class="text-dark" :href="'/counties/' + result.county_slug">{{ result.county
+                                    }}</a>
+                            </p>
+                            <p>
+                                City:
+                                <a class="text-dark" :href="'/cities/' + result.city_slug">{{ result.city }}</a>
+                            </p>
+                            <p>
+                                Phone Number: {{ result.phone_number }}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -105,7 +99,9 @@ export default {
         changePlaceholderText() {
             this.placeholderText = 'Search by ' + this.searchType + '...';
         },
-
+        redirectStation(event){
+            window.location.href = event.target.children[0].children[0].href;
+        },
         submitSearch() {
             if (this.stations == null) {
                 this.errorOccurred = true;

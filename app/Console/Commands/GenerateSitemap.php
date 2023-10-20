@@ -27,10 +27,13 @@ class GenerateSitemap extends Command
      */
     public function handle()
     {
-        if(!Storage::disk('public')->exists('sitemap.xml')){
-            Storage::disk('public')->put('sitemap.xml', '');
+        if(Storage::disk('public')->exists('sitemap.xml')){
+            Storage::disk('public')->deelte('sitemap.xml');
         }
-        SitemapGenerator::create(env('APP_URL'))->writeToFile(public_path('sitemap.xml'));
+        Storage::disk('public')->put('sitemap.xml', '');
+        
+        Storage::disk('public')->append('sitemap.xml', '');
+
         $this->newLine();
         $this->info('Writing to sitemap.xml in public folder');
         $this->newLine();

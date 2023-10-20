@@ -31,7 +31,7 @@ class StationController extends Controller
 
     public function viewStations()
     {
-        $stations = Station::orderBy('station_name', 'ASC')->paginate(10);
+        $stations = Station::orderBy('station_name', 'ASC')->paginate(20);
         return view('stations', ['stations' => $stations,
             'title' => 'Inspection Stations',
         ]);
@@ -40,15 +40,16 @@ class StationController extends Controller
     public function viewCounty($countyNameSlug)
     {
         $county = County::where('county_slug', $countyNameSlug)->first();
-
+        $stations = $county->stations()->paginate('20');
         return view('county', ['county' => $county,
             'title' => 'Stations in ' . $county->county . ' County, PA',
+            'stations' => $stations,
         ]);
     }
 
     public function viewCounties()
     {
-        $counties = County::orderBy('county', 'ASC')->paginate(10);
+        $counties = County::orderBy('county', 'ASC')->paginate(20);
         return view('counties', ['counties' => $counties,
             'title' => 'Counties',
         ]);
@@ -57,14 +58,16 @@ class StationController extends Controller
     public function viewCity($cityNameSlug)
     {
         $city = City::where('city_slug', $cityNameSlug)->first();
+        $stations = $city->stations()->paginate('20');
         return view('city', ['city' => $city,
             'title' => 'Stations in ' . $city->city . ', PA',
+            'stations' => $stations,
         ]);
     }
 
     public function viewCities()
     {
-        $cities = City::orderBy('city', 'ASC')->paginate(10);
+        $cities = City::orderBy('city', 'ASC')->paginate(20);
         return view('cities', ['cities' => $cities,
             'title' => 'Cities',
         ]);

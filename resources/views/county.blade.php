@@ -18,7 +18,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($county->stations as $station)
+                @foreach ($stations as $station)
                     <tr>
                         <td> <a class="text-black" href="/stations/{{$station ->station_name_slug}}"> {{$station -> station_name}} </a> </td>
                         <td> <a class="text-black" href="/cities/{{$station ->city_slug}}">{{$station -> city}}</a> </td>
@@ -27,6 +27,7 @@
                 @endforeach
             </tbody>
         </table>
+        {{$stations -> links('pagination::bootstrap-5')}}
     </div>
    
 </div>

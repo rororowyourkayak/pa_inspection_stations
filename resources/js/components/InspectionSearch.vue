@@ -4,6 +4,7 @@
         <p>Use this tool to search for a station, county or city, up to 20 characters.
             <br>To change between search type, use the dropdown to change.
             <br> After typing your query, hit the search icon to run the search.
+            <br>You can click the links in each result to learn more.
         </p>
         <div class="col-sm-12 mx-auto">
 

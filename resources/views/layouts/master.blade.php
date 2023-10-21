@@ -52,9 +52,7 @@
         
         <div class="col-sm-12 text-center bg-white py-4 mt-4 col-sm-12">
             <p>This site is privately maintained, not affiliated with PennDOT or any other government body.
-            <br> Information regarding inspection programs and stations was retrieved from PennDOT.
             <br> All information used on this site is within the public domain. 
-            <br>This site does not guarantee 100% accurate information.
             <br>Data used about stations is as of <b>{{config('metadata.dataAsOf')}}</b>. 
             
             </p>

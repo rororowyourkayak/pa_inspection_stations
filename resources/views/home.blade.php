@@ -15,16 +15,16 @@
         <h3 ><a href="/search" >Go to Station Finder>></a></h3>
 
         <div class="row my-4">
-            <div class="col-sm-3 text-center py-4 bg-white mx-auto shadow border border-primary">
+            <div class="col-sm-3 text-center py-4 bg-white mx-auto shadow">
                 <h4>Looking for stations?</h4>
                 <p>View our <a href="/stations">Stations</a> page.</p>
             </div>
-            <div class="col-sm-3 text-center py-4 bg-white mx-auto shadow border border-primary">
+            <div class="col-sm-3 text-center py-4 bg-white mx-auto shadow">
                 <h4>Looking for counties?</h4>
                 <p>View our <a href="/counties">Counties</a> page.</p>
             </div>
-            <div class="col-sm-3 text-center py-4 bg-white mx-auto shadow border border-primary">
-                <h4>Looking for cities?</h4>
+            <div class="col-sm-3 text-center py-4 bg-white mx-auto shadow">
+                <h4>  Looking for cities?</h4>
                 <p>View our <a href="/cities">Cities</a> page.</p>
             </div>
         </div>

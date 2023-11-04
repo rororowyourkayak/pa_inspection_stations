@@ -20,6 +20,7 @@ use App\Http\Controllers\StationController;
 Route::controller(MainController::class)->group(function(){
     Route::get('/', 'viewHomePage');
     Route::get('/search', 'viewSearchPage');
+    
     //Route::get('/searchTool', 'processSearch');
 });
 

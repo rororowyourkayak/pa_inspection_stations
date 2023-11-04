@@ -35,7 +35,7 @@
 
         </div>
         <div id="resultDisplay" class="col-sm-10 mx-auto my-4">
-            <div v-if="errorOccurred" class="alert alert-danger container text-center mx-auto my-4"> Unexpected error has
+            <div v-if="responseError" class="alert alert-danger container text-center mx-auto my-4"> Unexpected error has
                 occurred. We are working on fixing it.</div>
             <div v-if="searchIsLoading">
                 <div class="spinner-border spinner-border-sm"></div> Loading...
@@ -45,12 +45,12 @@
                     class="alert alert-danger container text-center mx-auto my-4">No results from search. Try changing your
                     search
                     text.</div>
-                <div v-else-if="resultData.result">
+                <div v-else-if="resultData.results">
                     <div class="alert alert-success container text-center mx-auto my-4">
-                        <b>{{ resultData.result.length }}</b> results matched your search!
+                        <b>{{ resultData.results.length }}</b> results matched your search!
                     </div>
                     <div>
-                        <div @click.self="redirectStation" v-for="result in resultData.result" class="col-sm-10 mx-auto bg-white my-4 p-4 text-center shadow border border-1 border-primary rounded">
+                        <div @click.self="redirectStation" v-for="result in resultData.results" class="col-sm-10 mx-auto bg-white my-4 p-4 text-center shadow border border-1 border-primary rounded">
                             <p>Station: 
                                 <a class="text-dark" :href="'/stations/' + result.station_name_slug">{{
                                     result.station_name }}</a>
@@ -81,17 +81,18 @@ export default {
 
     data: () => {
         return {
-            stations: null,
             placeholderText: 'Search by name...',
             searchType: 'name',
             searchText: '',
             resultData: {
                 emptyResult: null,
-                result: null,
+                results: null,
+                type: null,
+                error: null
             },
             searchIsLoading: false,
             emptyText: false,
-            errorOccurred: false,
+            responseError: false,
 
         }
     },
@@ -104,76 +105,30 @@ export default {
             window.location.href = event.target.children[0].children[0].href;
         },
         submitSearch() {
-            if (this.stations == null) {
-                this.errorOccurred = true;
-            } 
-            else {
-                this.errorOccurred = false;
-                this.resultData.emptyResult = null;
-                this.resultData.result = null;
-                if (this.searchText.length == 0) {
-                    this.emptyText = true;
+            this.responseError = '';
+            this.resultData.emptyResult = null;
+            this.resultData.results = null;
+            this.resultData.type = null;
+            this.resultData.error = null;
+            this.searchIsLoading = true;
+            axios.get('/api/stations', {
+                params: {
+                    search: this.searchText,
+                    type: this.searchType
                 }
-                else {
-                    this.searchIsLoading = true;
-                    this.emptyText = false;
-
-
-                    var search = this.searchText.toLowerCase(); //make lowercase for begins with matching
-                    var type = this.searchType;
-                    var results = [];
-                    if (type == 'name') { type = 'station_name'; }
-                    this.stations.forEach((station) => {
-                        var value = station[type].toLowerCase();
-                        if (value.startsWith(search)) {
-                            results.push(station);
-                        }
-                    });
-
-                    if (results.length == 0) {
-                        this.resultData.emptyResult = true;
-                    }
-                    else {
-                        this.resultData.result = results;
-                        this.resultData.type = type;
-                    }
+            }).then(response => {
+                this.searchIsLoading = false;
+                this.resultData = response.data;
+            })
+                .catch(error => {
                     this.searchIsLoading = false;
-                }
-            }
+                    this.responseError = 'A system error has occurred. Please try again later.';
+                });
         },
-    },
-    beforeMount() {
-        axios.get('/api/stations').then(response =>{
-                this.stations = response['data']['stations'];
-        })
+    
     }
 }
 </script>
-<style>
-@media screen and (max-width: 860px){
-    #searchTable th, #searchTable thead{
-        display: none;
-    }
-    #searchTable td {
-        display: block;
-    }
 
-    #searchTable ::before{
-        font-weight: bold;
-    }
-    #searchTable td:nth-of-type(1):before{
-        content: 'Station Name: ';
-    }
-    #searchTable td:nth-of-type(2):before{
-        content: 'County: ';
-    }
-    #searchTable td:nth-of-type(3):before{
-        content: 'City: ';
-    }
-    #searchTable td:nth-of-type(4):before{
-        content: 'Phone Number: ';
-    }
-}
-</style>
 
 

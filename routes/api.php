@@ -16,5 +16,5 @@ use App\Http\Controllers\MainController;
 */
 
 Route::controller(MainController::class)->group(function(){
-    Route::get('/stations', 'getStations');
+    Route::get('/stations', 'processSearch');
 });

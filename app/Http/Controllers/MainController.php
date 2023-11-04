@@ -28,12 +28,12 @@ class MainController extends Controller
         ]);
     }
 
-    public function getStations(){
-        return response()->json(['stations' => cache('stations')]);
-    }
+    /* public function getStations(){
+        return response()->json(['stations' => Station::all()]);
+    } */
 
     //search api functionality is not currently in use but may be useful later
-    /* public function processSearch(){
+    public function processSearch(){
     
         $validator = Validator::make(request()->input(), [
             'search' => ['string', 'nullable', 'max:20'],
@@ -62,9 +62,9 @@ class MainController extends Controller
         }
 
         return response()->json([
-            'result' => $result,
+            'results' => $result,
             'type' => $searchType,
         ]);
     }
-    */
+   
 }

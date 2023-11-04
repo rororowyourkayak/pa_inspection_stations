@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-100">
 <head>
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google-site-verification" content="8Hf2Cxe81yvKLjMfpec0ct8kvYkfCyTgoecHKJbFsS4" />
+    <meta name="google-adsense-account" content="ca-pub-1981663975150701">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1981663975150701"
+     crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="{{asset('pa-auto.ico')}}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -11,9 +15,17 @@
     @yield('meta')
 </head>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BLEKRFB6FL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-BLEKRFB6FL');
+</script>
 
-<body class="custom-font">
+<body class="custom-font d-flex flex-column h-100">
     <nav class="navbar navbar-expand-sm navbar-dark custom-blue-bg">
         <div class="container-fluid">
             
@@ -48,7 +60,7 @@
     </nav>
     @yield('content')
 
-    <footer>
+    <footer class="footer mt-auto">
         
         <div class="col-sm-12 text-center bg-white py-4 mt-4 col-sm-12">
             <p>This site is privately maintained, not affiliated with PennDOT or any other government body.

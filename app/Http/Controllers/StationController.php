@@ -22,10 +22,19 @@ class StationController extends Controller
         $station_city_pieces = explode(' ', $station_city);
         $search_query .= '+' . implode('+', $station_city_pieces) . ',+PA';
 
+        $inspectionTypes = [
+            'Passenger Cars / Light Trucks' => $station -> passenger_cars_and_light_trucks ? 'Yes' : 'No',
+            'Medium Trucks' => $station -> medium_trucks ? 'Yes' : 'No',
+            'Heavy Trucks' => $station -> heavy_trucks ? 'Yes' : 'No',
+            'Motorcycles' => $station -> motorcycle ? 'Yes' : 'No',
+            'Trailer 10,000 lbs. or less' => $station -> trailer_less_10000 ? 'Yes' : 'No',
+            'Trailer 10,000 lbs. or more' => $station -> trailer_greater_10000 ? 'Yes' : 'No',
+        ];
         return view('station',
             ['station' => $station,
                 'title' => $station->station_name,
                 'searchQuery' => $search_query,
+                'inspectionTypes' => $inspectionTypes,
             ]);
     }
 

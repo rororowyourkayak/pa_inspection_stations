@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 
-<div class=" col-sm-8 my-4 py-4 bg-white mx-auto text-center">
+<div class=" col-sm-8 my-4 py-4 bg-white mx-auto text-center shadow">
     <h1>{{$station->station_name}}</h1>
     <h6>{{$station->station_street_address}}</h6>
     <h6>{{$station->station_city}}, PA {{$station->station_zip_plus_4}}</h6>
@@ -35,66 +35,12 @@
             </tr>
         </thead>
 
-        <tr>
-            <td>Passenger Cars / Light Trucks</td>
-            <td>
-                @if($station ->passenger_cars_and_light_trucks)
-                Yes
-                @else
-                No
-                @endif
-            </td>
-        </tr>
-        <tr>
-            <td>Medium Trucks</td>
-            <td>
-                @if($station ->medium_trucks)
-                Yes
-                @else
-                No
-                @endif
-            </td>
-        </tr>
-        <tr>
-            <td>Heavy Trucks</td>
-            <td>
-                @if($station ->heavy_trucks)
-                Yes
-                @else
-                No
-                @endif
-            </td>
-        </tr>
-        <tr>
-            <td>Motorcycle</td>
-            <td>
-                @if($station ->motorcycle)
-                Yes
-                @else
-                No
-                @endif
-            </td>
-        </tr>
-        <tr>
-            <td>Trailer 10,000 lbs. or less</td>
-            <td>
-                @if($station ->trailer_less_10000)
-                Yes
-                @else
-                No
-                @endif
-            </td>
-        </tr>
-        <tr>
-            <td>Trailer 10,000 lbs. or more</td>
-            <td>
-                @if($station ->trailer_greater_10000)
-                Yes
-                @else
-                No
-                @endif
-            </td>
-        </tr>
+        @foreach ($inspectionTypes as $type => $value)
+            <tr>
+                <td> {{$type}} </td>
+                <td> {{$value}} </td>
+            </tr>
+        @endforeach
 
     </table>
 </div>

@@ -66,7 +66,8 @@
             <p>This site is privately maintained, not affiliated with PennDOT or any other government body.
             <br> All information used on this site is within the public domain. 
             <br>Data used about stations is as of <b>{{config('metadata.dataAsOf')}}</b>. 
-            
+            <br>Disclaimer: This site's owner is not liable for actions taken while using information from this site. 
+            <br>This site may potential contain data inaccuracies and does not provide legal advice or calls to action.
             </p>
         </div>
     

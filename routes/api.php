@@ -15,6 +15,6 @@ use App\Http\Controllers\MainController;
 |
 */
 
-Route::controller(MainController::class)->group(function(){
+Route::controller(MainController::class)->middleware('throttle:10,1')->group(function(){
     Route::get('/stations', 'processSearch');
 });

@@ -7,7 +7,8 @@
 <div class=" col-sm-8 my-4 py-4 bg-white mx-auto text-center shadow">
     <h1>{{$station->station_name}}</h1>
     <h6>{{$station->station_street_address}}</h6>
-    <h6>{{$station->station_city}}, PA {{$station->station_zip_plus_4}}</h6>
+    <h6>{{$station->city}}, PA {{$station->station_zip_plus_4}}</h6>
+    <h6>{{$station->county}} County </h6>
     <div class="row mt-4">
         <div class="col-sm-4 ms-auto">
             <h4>Phone Number:</h4>

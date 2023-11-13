@@ -35,8 +35,9 @@
 
         </div>
         <div id="resultDisplay" class="col-sm-10 mx-auto my-4">
-            <div v-if="responseError" class="alert alert-danger container text-center mx-auto my-4"> Unexpected error has
-                occurred. We are working on fixing it.</div>
+            <div v-if="responseError" class="alert alert-danger container text-center mx-auto my-4">
+                <p>{{ responseErrorText }}</p>
+            </div>
             <div v-if="searchIsLoading">
                 <div class="spinner-border spinner-border-sm"></div> Loading...
             </div>
@@ -50,15 +51,16 @@
                         <b>{{ resultData.results.length }}</b> results matched your search!
                     </div>
                     <div>
-                        <div @click.self="redirectStation" v-for="result in resultData.results" class="col-sm-10 mx-auto bg-white my-4 p-4 text-center shadow border border-1 border-primary rounded">
-                            <p>Station: 
+                        <div @click.self="redirectStation" v-for="result in resultData.results"
+                            class="col-sm-10 mx-auto bg-white my-4 p-4 text-center shadow border border-1 border-primary rounded">
+                            <p>Station:
                                 <a class="text-dark" :href="'/stations/' + result.station_name_slug">{{
                                     result.station_name }}</a>
                             </p>
                             <p>
                                 County:
                                 <a class="text-dark" :href="'/counties/' + result.county_slug">{{ result.county
-                                    }}</a>
+                                }}</a>
                             </p>
                             <p>
                                 City:
@@ -93,6 +95,7 @@ export default {
             searchIsLoading: false,
             emptyText: false,
             responseError: false,
+            responseErrorText: ''
 
         }
     },
@@ -101,17 +104,17 @@ export default {
         changePlaceholderText() {
             this.placeholderText = 'Search by ' + this.searchType + '...';
         },
-        redirectStation(event){
+        redirectStation(event) {
             window.location.href = event.target.children[0].children[0].href;
         },
-        submitSearch() {
+        async submitSearch() {
             this.responseError = '';
             this.resultData.emptyResult = null;
             this.resultData.results = null;
             this.resultData.type = null;
             this.resultData.error = null;
             this.searchIsLoading = true;
-            axios.get('/api/stations', {
+            await axios.get('/api/stations', {
                 params: {
                     search: this.searchText,
                     type: this.searchType
@@ -122,10 +125,15 @@ export default {
             })
                 .catch(error => {
                     this.searchIsLoading = false;
-                    this.responseError = 'A system error has occurred. Please try again later.';
+                    if (error.response.status == 429) {
+                        'Too many searches have been made. Please wait a minute to try again.'
+                    } else {
+                        this.responseError = 'A system error has occurred. Please try again later.';
+                    }
+
                 });
         },
-    
+
     }
 }
 </script>

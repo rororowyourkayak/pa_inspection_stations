@@ -59,8 +59,10 @@ class StationController extends Controller
     public function viewCounties()
     {
         $counties = County::orderBy('county', 'ASC')->paginate(20);
+        $top20 = County::orderBy('county_count', 'DESC')->limit(10)->get();
         return view('counties', ['counties' => $counties,
             'title' => 'Counties',
+            'top20' => $top20,
         ]);
     }
 
@@ -77,8 +79,10 @@ class StationController extends Controller
     public function viewCities()
     {
         $cities = City::orderBy('city', 'ASC')->paginate(20);
+        $top20 = City::orderBy('city_count', 'DESC')->limit(10)->get();
         return view('cities', ['cities' => $cities,
             'title' => 'Cities',
+            'top20' => $top20,
         ]);
     }
 

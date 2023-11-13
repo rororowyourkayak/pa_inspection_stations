@@ -15,21 +15,8 @@
         <br> Our built-in search tool allows you to search for a stations by name, county, or city.
     </p>
     <h3><a href="/search">Go to Station Finder>></a></h3>
-
-    <div class="row my-4">
-        <div class="col-sm-3 text-center py-4 bg-white mx-auto  mw-auto">
-            <h4>Looking for stations?</h4>
-            <p>View our <a href="/stations">Stations</a> page.</p>
-        </div>
-        <div class="col-sm-3 text-center py-4 bg-white mx-auto  mw-auto">
-            <h4>Looking for counties?</h4>
-            <p>View our <a href="/counties">Counties</a> page.</p>
-        </div>
-        <div class="col-sm-3 text-center py-4 bg-white mx-auto  mw-auto">
-            <h4> Looking for cities?</h4>
-            <p>View our <a href="/cities">Cities</a> page.</p>
-        </div>
-    </div>
+    <br>
+    <p>Read below for more information about which vehicle types need inspections.</p>
 
 </div>
 
@@ -38,7 +25,8 @@
     <div class="col-sm-10 mx-auto mb-4">
         <p>
             Most automotive vehicles in Pennsylvania require either annual or semi-annual safety inspections
-            by an official inspection station. Information about which vehicles need which inspection frequency is
+            by an official inspection station. Safety inspections are intended to prevent potential failures that may
+            result in injury or death. Information about which vehicles need which inspection frequency is
             listed below.</p>
 
         <p> (The following information was retrieved from the <a
@@ -48,7 +36,11 @@
         </p>
     </div>
 
-    <div class="col-sm-8 mx-auto">
+    <p><a href="#not-required">Vehicle Types Where Inspection Not Required</a></p>
+    <p><a href="#semi-annual">Semi-Annual Inspections</a></p>
+    <p><a href="#annual">Annual Inspections</a></p>
+
+    <div id="not-required" class="col-sm-8 mx-auto">
         <table class="table table-response-sm table-bordered">
             <thead>
                 <tr class="table-danger">
@@ -98,46 +90,73 @@
         </table>
     </div>
 
-    <div class="col-sm-8 mx-auto">
+    <div id="semi-annual" class="col-sm-8 mx-auto">
         <table class="table table-response-sm table-bordered">
             <thead>
                 <tr class="table-warning">
                     <td>
-                        <h4>Semi-Annual Inspections
+                        <h4>Semi-Annual Inspections</h4>
                     </td>
                 </tr>
             </thead>
 
             <tr>
-                <td>School buses, vehicles which are under contract with or owned by a school district or a private or parochial school,
-                    including vehicles having chartered group and party rights under the Public Utility Commission and used to transport
-                    school students; passenger vans used to transport persons for hire or owned by a commercial enterprise and used
-                    for the transportation of employees to or from their place of employment; and mass transit vehicles and motor carrier
-                    vehicles with a registered gross weight in excess of 17,000 pounds, other than farm vehicles for which a biennial
+                <td>School buses, vehicles which are under contract with or owned by a school district or a private or
+                    parochial school,
+                    including vehicles having chartered group and party rights under the Public Utility Commission and
+                    used to transport
+                    school students; passenger vans used to transport persons for hire or owned by a commercial
+                    enterprise and used
+                    for the transportation of employees to or from their place of employment; and mass transit vehicles
+                    and motor carrier
+                    vehicles with a registered gross weight in excess of 17,000 pounds, other than farm vehicles for
+                    which a biennial
                     certificate of exemption has been issued shall be subject to semi-annual inspection. </td>
             </tr>
-            
+            <tr>
+                <td>
+                    <h4>Examples: </h4>
+                </td>
+            </tr>
+            <tr>
+                <td>School Buses</td>
+            </tr>
+            <tr><td>Other Student Transport Vehicles</td></tr>
+            <tr>
+                <td>Employee Transportation Vehicles</td>
+            </tr>
         </table>
     </div>
-    <div class="col-sm-8 mx-auto">
+    <div id="annual" class="col-sm-8 mx-auto">
         <table class="table table-response-sm table-bordered">
             <thead>
                 <tr class="table-primary">
                     <td>
-                        <h4>Annual Inspections
+                        <h4>Annual Inspections</h4>
                     </td>
                 </tr>
             </thead>
 
             <tr>
-                <td>Other vehicles, including motor homes, emergency vehicles and private noncommercial vehicles used to transport
-                    students, shall be inspected annually. Motor homes and emergency vehicles built on a truck chassis shall be
-                    inspected according to the appropriate truck inspection procedure based on the registered gross weight of the
+                <td>Other vehicles, including motor homes, emergency vehicles and private noncommercial vehicles used to
+                    transport
+                    students, shall be inspected annually. Motor homes and emergency vehicles built on a truck chassis
+                    shall be
+                    inspected according to the appropriate truck inspection procedure based on the registered gross
+                    weight of the
                     vehicle.</td>
             </tr>
-            
+            <tr><td><h4>Examples:</h4></td></tr>
+            <tr><td>Passenger Cars</td></tr>
+            <tr><td>Passenger Trucks</td></tr>
+            <tr><td>Motorcycles</td></tr>
+            <tr><td>Motor Homes</td></tr>
+            <tr><td>Trailers less than 17,000 lbs.</td></tr>
         </table>
     </div>
+    <p>The examples above are not necessarily all examples for each category. 
+        <br>For more information, please reference the source document linked above.
+    </p>
 </div>
 
 

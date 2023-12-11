@@ -44,7 +44,7 @@ class GenerateSitemap extends Command
         fwrite($file, $this->makeUrlSection('counties', $date, '0.8'));
         fwrite($file, $this->makeUrlSection('cities', $date, '0.8'));
 
-        foreach (Station::all() as $station) {
+        /* foreach (Station::all() as $station) {
             fwrite($file, $this->makeUrlSection('stations/'.$station->station_name_slug, $date, '0.6'));
         }
         foreach (County::all() as $county) {
@@ -52,7 +52,7 @@ class GenerateSitemap extends Command
         }
         foreach (City::all() as $city) {
             fwrite($file, $this->makeUrlSection('cities/'.$city->city_slug, $date, '0.5'));
-        }
+        } */
 
         fwrite($file, "</urlset>");
         

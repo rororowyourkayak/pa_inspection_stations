@@ -108,6 +108,11 @@ export default {
             window.location.href = event.target.children[0].children[0].href;
         },
         async submitSearch() {
+            if(this.searchText.length == 0){
+                this.emptyText = true;
+            }
+            else{
+            this.emptyText = false;
             this.responseError = '';
             this.resultData.emptyResult = null;
             this.resultData.results = null;
@@ -132,7 +137,8 @@ export default {
                     }
 
                 });
-        },
+        }
+    },
 
     }
 }

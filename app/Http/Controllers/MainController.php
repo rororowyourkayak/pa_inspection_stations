@@ -22,9 +22,12 @@ class MainController extends Controller
     }
 
     public function viewSearchPage(){
+        $defaultResults = Station::limit(10)->get();
+
         return view('search',[
            // 'stations' =>cache('stations')/*  Station::all() */,
             'title' => 'Inspection Search',
+            'defaultResults'=> $defaultResults,
         ]);
     }
 

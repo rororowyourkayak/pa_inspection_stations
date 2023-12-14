@@ -4,6 +4,7 @@
 @endsection
 @section('content')
 
+
 <div class="col-sm-8 bg-white my-4 p-4 text-center mx-auto shadow">
     <h1>PA Inspection Counties</h1>
     <p>This page contains information about the counties in PA with inspection stations.</p>

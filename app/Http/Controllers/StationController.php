@@ -50,6 +50,7 @@ class StationController extends Controller
     {
         $county = County::where('county_slug', $countyNameSlug)->first();
         $stations = $county->stations()->paginate('20');
+        
         return view('county', ['county' => $county,
             'title' => 'Auto safety Inspection Stations in ' . $county->county . ' County, PA',
             'stations' => $stations,

@@ -5,14 +5,13 @@
 @endsection
 @section('content')
 
-<div class="col-sm-9 mx-auto text-center bg-white py-4 my-4 shadow">
+<div class="col-sm-8 mx-auto text-center bg-white py-4 my-4 shadow">
     <h1>PA Auto Safety Inspection Stations</h1>
     <p>In Pennsylvania, there are <b>{{$stationsCount}}</b> safety inspection stations across <b>{{$citiesCount}}</b>
         cities across <b>{{$countiesCount}}</b> counties.
     <p>This site serves to provide users with easier access to information about inspection stations in PA.
-        <br> Using the navigation above, you may view links to find specific stations by name, as well as counties and
-        cities.
-        <br> Our built-in search tool allows you to search for a stations by name, county, or city.
+        <br> Using the navigation above, you may view links to find specific stations by name, county, and city.
+        <br> Our site's station finder allows you to search for a stations by name, county, or city.
     </p>
     <h3><a href="/search">Go to Station Finder>></a></h3>
     <br>
@@ -20,27 +19,30 @@
 
 </div>
 
-<div class="col-sm-9 mx-auto text-center bg-white py-4 my-4 shadow">
-    <h2>About Safety Inspections</h2>
+<div class="col-sm-8 mx-auto text-center bg-white py-4 my-4 shadow">
+    <h2>About Auto Safety Inspections in PA</h2>
     <div class="col-sm-10 mx-auto mb-4">
         <p>
             Most automotive vehicles in Pennsylvania require either annual or semi-annual safety inspections
             by an official inspection station. Safety inspections are intended to prevent potential failures that may
-            result in injury or death. Information about which vehicles need which inspection frequency is
-            listed below.</p>
+            result in injury or death. Inspection frequency requirements fall into three categories:
 
-        <p> (The following information was retrieved from the <a
-                href="https://www.dot.state.pa.us/Public/DVSPubsForms/BMV/BMV%20Manuals/Pub_45%20Inspections%20Regulations/PUB-45.pdf"
-                target="_blank">Vehicle Equipment and
-                Inspection Regulations</a> document from PennDOT.)
+            <li>Not Required</li>
+            <li>Semi-Annual</li>
+            <li>Annual</li>
+
+            Examples regarding vehicles and their specific inspection frequency are listed below.
         </p>
+
+        <p><a href="#not-required">Vehicle Types Where Inspection Not Required</a></p>
+        <p><a href="#semi-annual">Semi-Annual Inspections</a></p>
+        <p><a href="#annual">Annual Inspections</a></p>
     </div>
+</div>
 
-    <p><a href="#not-required">Vehicle Types Where Inspection Not Required</a></p>
-    <p><a href="#semi-annual">Semi-Annual Inspections</a></p>
-    <p><a href="#annual">Annual Inspections</a></p>
 
-    <div id="not-required" class="col-sm-8 mx-auto">
+<div class="col-sm-8 mx-auto text-center bg-white py-4 my-4 shadow">
+    <div id="not-required" class="col-sm-10 mx-auto">
         <table class="table table-response-sm table-bordered">
             <thead>
                 <tr class="table-danger">
@@ -89,11 +91,13 @@
             </tr>
         </table>
     </div>
+</div>
 
-    <div id="semi-annual" class="col-sm-8 mx-auto">
+<div class="col-sm-8 mx-auto text-center bg-white py-4 my-4 shadow">
+    <div id="semi-annual" class="col-sm-10 mx-auto">
         <table class="table table-response-sm table-bordered">
             <thead>
-                <tr class="table-warning">
+                <tr class="table-secondary">
                     <td>
                         <h4>Semi-Annual Inspections</h4>
                     </td>
@@ -121,13 +125,18 @@
             <tr>
                 <td>School Buses</td>
             </tr>
-            <tr><td>Other Student Transport Vehicles</td></tr>
+            <tr>
+                <td>Other Student Transport Vehicles</td>
+            </tr>
             <tr>
                 <td>Employee Transportation Vehicles</td>
             </tr>
         </table>
     </div>
-    <div id="annual" class="col-sm-8 mx-auto">
+</div>
+
+<div class="col-sm-8 mx-auto text-center bg-white py-4 my-4 shadow">
+    <div id="annual" class="col-sm-10 mx-auto">
         <table class="table table-response-sm table-bordered">
             <thead>
                 <tr class="table-primary">
@@ -146,18 +155,42 @@
                     weight of the
                     vehicle.</td>
             </tr>
-            <tr><td><h4>Examples:</h4></td></tr>
-            <tr><td>Passenger Cars</td></tr>
-            <tr><td>Passenger Trucks</td></tr>
-            <tr><td>Motorcycles</td></tr>
-            <tr><td>Motor Homes</td></tr>
-            <tr><td>Trailers less than 17,000 lbs.</td></tr>
+            <tr>
+                <td>
+                    <h4>Examples:</h4>
+                </td>
+            </tr>
+            <tr>
+                <td>Passenger Cars</td>
+            </tr>
+            <tr>
+                <td>Passenger Trucks</td>
+            </tr>
+            <tr>
+                <td>Motorcycles</td>
+            </tr>
+            <tr>
+                <td>Motor Homes</td>
+            </tr>
+            <tr>
+                <td>Trailers less than 17,000 lbs.</td>
+            </tr>
         </table>
     </div>
-    <p>The examples above are not necessarily all examples for each category. 
+</div>
+
+<div class="col-sm-8 mx-auto text-center bg-white py-4 my-4 shadow">
+    <p> Information above regarding inspection vehicle types was retrieved from the
+        <br><a
+            href="https://www.dot.state.pa.us/Public/DVSPubsForms/BMV/BMV%20Manuals/Pub_45%20Inspections%20Regulations/PUB-45.pdf"
+            target="_blank">Vehicle Equipment and
+            Inspection Regulations</a> <br>document from PennDOT.
+        The examples above are not necessarily all examples for each category.
         <br>For more information, please reference the source document linked above.
     </p>
 </div>
+
+
 
 
 @endsection

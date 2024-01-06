@@ -15,7 +15,7 @@ class County extends Model
 
     public function stations() : HasMany {
 
-        return $this -> hasMany(Station::class, 'county','county');
+        return $this -> hasMany(Station::class, 'county_slug','county_slug');
     }
 
     public function cities() : HasMany {

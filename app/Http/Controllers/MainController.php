@@ -17,17 +17,15 @@ class MainController extends Controller
             'stationsCount' => Station::count(), 
             'countiesCount' => County::count(),
             'citiesCount' => City::count(),
-            'title' => 'PA Inspection Stations'
+            'title' => 'PA Auto Inspection Stations - Find an auto inspection station near you in Pennsylvania'
         ]);
     }
 
     public function viewSearchPage(){
-        $defaultResults = Station::limit(10)->get();
 
         return view('search',[
            // 'stations' =>cache('stations')/*  Station::all() */,
-            'title' => 'Inspection Search',
-            'defaultResults'=> $defaultResults,
+            'title' => 'PA Auto Inspection Station Search - Search for an auto inspection station near you in Pennsylvania',
         ]);
     }
 

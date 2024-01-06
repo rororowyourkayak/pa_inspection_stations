@@ -32,7 +32,7 @@ class StationController extends Controller
         ];
         return view('station',
             ['station' => $station,
-                'title' => $station->station_name,
+                'title' => $station->station_name . 'Auto Inspection Station',
                 'searchQuery' => $search_query,
                 'inspectionTypes' => $inspectionTypes,
             ]);
@@ -42,7 +42,7 @@ class StationController extends Controller
     {
         $stations = Station::orderBy('station_name', 'ASC')->paginate(20);
         return view('stations', ['stations' => $stations,
-            'title' => 'Inspection Stations',
+            'title' => 'PA Auto Inspection Stations List - Find an auto inspection station in Pennsylvania',
         ]);
     }
 
@@ -51,7 +51,7 @@ class StationController extends Controller
         $county = County::where('county_slug', $countyNameSlug)->first();
         $stations = $county->stations()->paginate('20');
         return view('county', ['county' => $county,
-            'title' => 'Stations in ' . $county->county . ' County, PA',
+            'title' => 'Auto safety Inspection Stations in ' . $county->county . ' County, PA',
             'stations' => $stations,
         ]);
     }
@@ -61,7 +61,7 @@ class StationController extends Controller
         $counties = County::orderBy('county', 'ASC')->paginate(20);
         $top20 = County::orderBy('county_count', 'DESC')->limit(10)->get();
         return view('counties', ['counties' => $counties,
-            'title' => 'Counties',
+            'title' => 'PA Auto Inspection Counties - Find counties in Pennsylvania with Auto Inspection Stations',
             'top20' => $top20,
         ]);
     }
@@ -71,7 +71,7 @@ class StationController extends Controller
         $city = City::where('city_slug', $cityNameSlug)->first();
         $stations = $city->stations()->paginate('20');
         return view('city', ['city' => $city,
-            'title' => 'Stations in ' . $city->city . ', PA',
+            'title' => 'Auto Safety Inspection Stations in ' . $city->city . ', PA',
             'stations' => $stations,
         ]);
     }
@@ -81,7 +81,7 @@ class StationController extends Controller
         $cities = City::orderBy('city', 'ASC')->paginate(20);
         $top20 = City::orderBy('city_count', 'DESC')->limit(10)->get();
         return view('cities', ['cities' => $cities,
-            'title' => 'Cities',
+            'title' => 'PA Auto Inspection Cities - Find cities in Pennsylvania with Auto Safety Inspection Stations',
             'top20' => $top20,
         ]);
     }

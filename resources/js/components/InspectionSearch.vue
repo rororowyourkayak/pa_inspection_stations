@@ -140,7 +140,30 @@ export default {
         }
     },
 
+    },
+    async mounted(){
+        this.searchText = 'auto';
+        this.searchType = 'name';
+        await axios.get('/api/stations', {
+                params: {
+                    search: this.searchText = 'auto',
+                    type: this.searchType = 'name'
+                }
+            }).then(response => {
+                this.searchIsLoading = false;
+                this.resultData = response.data;
+            })
+                .catch(error => {
+                    this.searchIsLoading = false;
+                    if (error.response.status == 429) {
+                        'Too many searches have been made. Please wait a minute to try again.'
+                    } else {
+                        this.responseError = 'A system error has occurred. Please try again later.';
+                    }
+
+                });
     }
+
 }
 </script>
 

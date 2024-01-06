@@ -6,5 +6,5 @@
 
 @section('content')
 
-<div id="tool"> <inspection-search :defaultResults={{$defaultResults}}></inspection-search> </div>
+<div id="tool"> <inspection-search></inspection-search> </div>
 @endsection

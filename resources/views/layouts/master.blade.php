@@ -11,7 +11,8 @@
     <link rel="icon" type="image/x-icon" href="{{asset('pa-auto.ico')}}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <title>{{$title}}</title>
+    <title>{{$title ?? 'PA Auto Safety Inspections'}}</title>
+    <meta name="keywords" content="auto, inspection, safety inspection, auto safety inspection,inspection station, inspection center,annual, emissions inspection, cars, automobiles, pa auto, pennsylvania, mechanics, auto shop, "/>
     @yield('meta')
 </head>
 

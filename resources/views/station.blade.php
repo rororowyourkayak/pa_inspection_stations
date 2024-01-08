@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 
-<div class=" col-sm-8 my-4 py-4 bg-white mx-auto text-center shadow">
+<div class=" col-sm-8 my-4 p-4 bg-white mx-auto text-center shadow">
     <h1>{{$station->station_name}}</h1>
     <h6>{{$station->station_street_address}}</h6>
     <h6>{{$station->city}}, PA {{$station->station_zip_plus_4}}</h6>
@@ -46,7 +46,26 @@
     </table>
 </div>
 
-
+<div class="col-sm-8 mx-auto text-center bg-white p-4 my-4 shadow">
+    <h3>Stations in {{$station->city}}, PA</h3>
+<table class="table table-response-sm table-striped table-bordered">
+<thead class="table-dark">
+    <tr>
+        <td>Station Name</td>
+        <td>Phone Number</td>
+    </tr>
+</thead>
+<tbody>
+    @foreach ($stationsInCity as $s)
+        <tr>
+            <td><a class="text-dark" href="/stations/station/{{$s->station_name_slug}}">{{$s -> station_name}}</a></td>
+            <td>{{$s -> phone_number}}</td>
+        </tr>
+    @endforeach
+</tbody>
+</table>
+{{$stationsInCity -> links('pagination::bootstrap-5')}}
+</div>
 
 
 

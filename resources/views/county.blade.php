@@ -20,8 +20,8 @@
             <tbody>
                 @foreach ($stations as $station)
                     <tr>
-                        <td> <a class="text-black" href="/stations/{{$station ->station_name_slug}}"> {{$station -> station_name}} </a> </td>
-                        <td> <a class="text-black" href="/cities/{{$station ->city_slug}}">{{$station -> city}}</a> </td>
+                        <td> <a class="text-black" href="/stations/station/{{$station ->station_name_slug}}"> {{$station -> station_name}} </a> </td>
+                        <td> <a class="text-black" href="/cities/city/{{$station ->city_slug}}">{{$station -> city}}</a> </td>
                         <td> {{$station -> phone_number}} </td>
                     </tr>
                 @endforeach
@@ -30,6 +30,25 @@
         {{$stations -> links('pagination::bootstrap-5')}}
     </div>
    
+</div>
+
+<div class="col-sm-8 mx-auto text-center bg-white p-4 my-4 shadow">
+    <h3>Cities in {{$county->county}} County</h3>
+    <table class="table table-response-sm table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <td>City</td>
+                <td>Stations in City</td>
+            </tr>
+        </thead>
+        @foreach ($cities as $city)
+            <tr>
+                <td><a class="text-black" href="/cities/city/{{$city->city_slug}}">{{$city->city}}</a></td>
+                <td> {{$city->city_count}} </td>
+            </tr>
+        @endforeach
+    </table>
+    {{$cities -> links('pagination::bootstrap-5')}}
 </div>
 
 

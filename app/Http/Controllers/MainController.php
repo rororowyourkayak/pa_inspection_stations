@@ -7,7 +7,7 @@ use App\Models\Station;
 use App\Models\County;
 use App\Models\City;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Str;
 
 class MainController extends Controller
 {
@@ -33,11 +33,11 @@ class MainController extends Controller
         return response()->json(['stations' => Station::all()]);
     } */
 
-    //search api functionality is not currently in use but may be useful later
+    
     public function processSearch(){
     
         $validator = Validator::make(request()->input(), [
-            'search' => ['string', 'nullable', 'max:20'],
+            'search' => ['required','string', 'nullable', 'max:20'],
             'type' => ['required', 'string', 'max:10']
         ]);
 
@@ -47,10 +47,28 @@ class MainController extends Controller
 
         $info = $validator->validated();
         $searchText = $info['search'];
+        $searchTextSlug = Str::slug($searchText);
         $searchType = $info['type'];
-    
-        $query = Station::where('station_'.$searchType, 'LIKE', "$searchText%")->orderBy('station_'.$searchType, 'ASC');
+        $column = '';
+        switch ($searchType) {
+            case 'name':
+                $column = 'station_name_slug';
+                break;
+            case 'county':
+                $column = 'county_slug';
+                break;
+                
+            case 'city':
+                $column = 'city_slug';
+                break;
+            default:
+                return response()->json(['errors' => ['invalidSearchType'=> 'Search type is not valid for this endpoint.']], 422);
+                break;
+        }
         
+        $query = Station::where($column, 'LIKE', "$searchTextSlug%")->orderBy($column, 'ASC');
+        
+
         try{
             $result = $query -> get();
             //change this exception type later

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Station extends Model
 {
@@ -15,4 +16,12 @@ class Station extends Model
     'station_name_slug','station_zip_plus_4', 'city', 'county', 'county_slug','city_slug'];
 
     public $timestamps = false;
+
+    public function county() : BelongsTo {
+        return $this->belongsTo(County::class, 'county', 'county');
+    }
+
+    public function parentCity() : BelongsTo {
+        return $this->belongsTo(City::class, 'city', 'city');
+    }
 }

@@ -188,6 +188,11 @@
         The examples above are not necessarily all examples for each category.
         <br>For more information, please reference the source document linked above.
     </p>
+
+    {{-- <p>
+        In addition to auto safety inspections, certain regions of Pennsylvania also require emissions inspections for certain vehicles. 
+        These areas are generally based on counties, 
+    </p> --}}
 </div>
 
 

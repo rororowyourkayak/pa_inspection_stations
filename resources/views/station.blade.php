@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 
-<div class=" col-sm-8 my-4 p-4 bg-white mx-auto text-center shadow">
+<div class=" col-sm-10 my-4 p-4 bg-white mx-auto text-center shadow">
     <h1>{{$station->station_name}}</h1>
     <h6>{{$station->station_street_address}}</h6>
     <h6>{{$station->city}}, PA {{$station->station_zip_plus_4}}</h6>
@@ -25,7 +25,7 @@
 </div>
 
 
-<div class=" col-sm-8 my-4 p-4 bg-white mx-auto text-center shadow">
+<div class=" col-sm-10 my-4 p-4 bg-white mx-auto text-center shadow">
     <h2>Vehicle Types Inspected</h2>
     <p>The table below shows which types of vehicles are inspected by this station:</p>
     <table class="table table-response-sm table-striped table-bordered">
@@ -46,7 +46,7 @@
     </table>
 </div>
 
-<div class="col-sm-8 mx-auto text-center bg-white p-4 my-4 shadow">
+<div class="col-sm-10 mx-auto text-center bg-white p-4 my-4 shadow">
     <h3>Stations in {{$station->city}}, PA</h3>
 <table class="table table-response-sm table-striped table-bordered">
 <thead class="table-dark">

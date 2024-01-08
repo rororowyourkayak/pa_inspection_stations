@@ -4,15 +4,14 @@
 @endsection
 @section('content')
 
-
-<div class="col-sm-8 bg-white my-4 p-4 text-center mx-auto shadow">
+<div class="col-sm-10 bg-white my-4 p-4 text-center mx-auto shadow">
     <h1>PA Inspection Counties</h1>
     <p>This page contains information about the counties in PA with inspection stations.</p>
     <p>Clicking on a county name will take you to a more detailed page about that county.</p>
     <h4>Looking for a specific county?</h4>
         <h4><a href="/search">Go to Station Finder>></a></h4>
 </div>
-<div class="col-sm-8 bg-white my-4 p-4 text-center mx-auto shadow">
+<div class="col-sm-10 bg-white my-4 p-4 text-center mx-auto shadow">
     <h3>Top 20 Counties in PA by Inspection Station Count:</h3><br>
     <div class="container">
         <table class="table table-response-sm  table-bordered">
@@ -37,7 +36,7 @@
     </div>
 </div>
 
-<div class="col-sm-8 bg-white my-4 p-4 text-center mx-auto shadow">
+<div class="col-sm-10 bg-white my-4 p-4 text-center mx-auto shadow">
     <h3>List of All Counties in PA:</h3>
     <p>Below is a list of all counties in PA and their inspection counts, broken up into pages.
     </p>

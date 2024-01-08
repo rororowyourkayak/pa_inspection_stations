@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div id="pageContainer" class="container col-sm-8 bg-white my-4 p-4 text-center shadow">
+<div id="pageContainer" class="container col-sm-10 bg-white my-4 p-4 text-center shadow">
     <h1>PA Safety Inspection Stations</h1>
     
     <p>Safety inspection stations can conduct inspections based on five main categories: 
@@ -30,7 +30,7 @@
     <h4>Looking for a specific station?</h4>
         <h4><a href="/search">Go to Station Finder>></a></h4>
 </div>
-<div class="col-sm-8 mx-auto text-center bg-white py-4 my-4 shadow">
+<div class="col-sm-10 mx-auto text-center bg-white py-4 my-4 shadow">
 
     <h2>List of All Safety Inspection Stations</h2>
     <div class="table-container col-sm-12 p-4">

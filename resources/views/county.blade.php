@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 
-<div class="col-sm-8 text-center mx-auto bg-white my-4 p-4 shadow">
+<div class="col-sm-10 text-center mx-auto bg-white my-4 p-4 shadow">
     <h1>Stations in {{$county -> county}} County, PA </h1>
     <p>There are {{$county -> county_count}} inspection stations in {{$county -> county}} county.</p>
 
@@ -32,7 +32,7 @@
    
 </div>
 
-<div class="col-sm-8 mx-auto text-center bg-white p-4 my-4 shadow">
+<div class="col-sm-10 mx-auto text-center bg-white p-4 my-4 shadow">
     <h3>Cities in {{$county->county}} County</h3>
     <table class="table table-response-sm table-striped table-bordered">
         <thead class="table-dark">

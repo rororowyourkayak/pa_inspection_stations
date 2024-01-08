@@ -1,5 +1,5 @@
 <template>
-    <div class="col-sm-8 mx-auto bg-white my-4 p-4 text-center shadow">
+    <div class="col-sm-10 mx-auto bg-white my-4 p-4 text-center shadow">
         <h2>Station Finder</h2>
         <p>Use this tool to search for a station, county or city, up to 20 characters.
             <br>To change between search type, use the dropdown to change.

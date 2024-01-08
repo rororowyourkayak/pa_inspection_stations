@@ -11,7 +11,11 @@ body{
 }
 
 .custom-blue-bg{
-  background-color: #0073c0;
+  background-color: #014878;
+}
+
+.other-blue-bg{
+  background-color: rgb(43, 43, 43)
 }
 
 .custom-green-bg{

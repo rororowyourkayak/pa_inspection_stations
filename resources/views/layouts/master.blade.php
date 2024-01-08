@@ -27,7 +27,7 @@
 </script>
 
 <body class="custom-font d-flex flex-column h-100">
-    <nav class="navbar navbar-expand-sm navbar-dark custom-blue-bg sticky-top">
+    <nav class="navbar navbar-expand-md navbar-dark custom-blue-bg sticky-top">
         <div class="container-fluid">
             
             <ul class="navbar-nav">
@@ -59,11 +59,27 @@
             </div>
         </div>
     </nav>
-    @yield('content')
+    <div class="row mw-100">
+        <div class="list-group list-group-flush other-blue-bg d-sm-none d-none d-md-block col-md-2 h-25">
+            <a href="/search" class="list-group-item list-group-item-action other-blue-bg text-white ms-2">Station Finder</a>
+            <a href="/stations" class="list-group-item list-group-item-action other-blue-bg text-white ms-2">Stations</a>
+            <a href="/counties" class="list-group-item list-group-item-action other-blue-bg text-white ms-2">Counties</a>
+            <a href="/cities" class="list-group-item list-group-item-action other-blue-bg text-white ms-2">Cities</a>
+            <a href="/counties/county/allegheny" class="list-group-item list-group-item-action other-blue-bg text-white ms-2">Allegheny County</a>
+            <a href="/counties/county/montgomery" class="list-group-item list-group-item-action other-blue-bg text-white ms-2">Montgomery County</a>
+            <a href="/counties/county/philadelphia" class="list-group-item list-group-item-action other-blue-bg text-white ms-2">Philadelphia County</a>
+        </div>
+    <div class="col-md-10">
+        @yield('content')
+    </div>
+    </div>
+            
+
+    
 
     <footer class="footer mt-auto">
         
-        <div class="col-sm-12 text-center bg-white py-4 mt-4 col-sm-12">
+        <div class="w-100 text-center bg-white py-4 mt-4">
             <p>This site is privately maintained, not affiliated with PennDOT or any other government body.
             <br> All information used on this site is within the public domain. 
             <br>Disclaimer: This site's owner is not liable for actions taken while using information from this site. 
@@ -76,4 +92,10 @@
 
 
 @yield('scripts')
+
+<style>
+    .list-group-item-action:hover{
+        color: black !important;
+    }
+</style>
 </html>

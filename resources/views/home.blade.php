@@ -5,7 +5,7 @@
 @endsection
 @section('content')
 
-<div class="col-sm-8 mx-auto text-center bg-white py-4 my-4 shadow">
+<div class="col-sm-10 mx-auto text-center bg-white py-4 my-4 shadow">
     <h1>PA Auto Safety Inspection Stations</h1>
     <p>In Pennsylvania, there are <b>{{$stationsCount}}</b> safety inspection stations across <b>{{$citiesCount}}</b>
         cities across <b>{{$countiesCount}}</b> counties.
@@ -19,7 +19,7 @@
 
 </div>
 
-<div class="col-sm-8 mx-auto text-center bg-white py-4 my-4 shadow">
+<div class="col-sm-10 mx-auto text-center bg-white py-4 my-4 shadow">
     <h2>About Auto Safety Inspections in PA</h2>
     <div class="col-sm-10 mx-auto mb-4">
         <p>
@@ -41,7 +41,7 @@
 </div>
 
 
-<div class="col-sm-8 mx-auto text-center bg-white py-4 my-4 shadow">
+<div class="col-sm-10 mx-auto text-center bg-white py-4 my-4 shadow">
     <div id="not-required" class="col-sm-10 mx-auto">
         <table class="table table-response-sm table-bordered">
             <thead>
@@ -72,7 +72,7 @@
                 <td>A motorized pedalcycle.</td>
             </tr>
             <tr>
-                <td>A vehicle being repossessed by a financer or collector-repossessor through the use of miscel laneous
+                <td>A vehicle being repossessed by a financer or collector-repossessor through the use of miscellaneous
                     motor vehicle business registration plates.</td>
             </tr>
             <tr>
@@ -93,7 +93,7 @@
     </div>
 </div>
 
-<div class="col-sm-8 mx-auto text-center bg-white py-4 my-4 shadow">
+<div class="col-sm-10 mx-auto text-center bg-white py-4 my-4 shadow">
     <div id="semi-annual" class="col-sm-10 mx-auto">
         <table class="table table-response-sm table-bordered">
             <thead>
@@ -135,7 +135,7 @@
     </div>
 </div>
 
-<div class="col-sm-8 mx-auto text-center bg-white py-4 my-4 shadow">
+<div class="col-sm-10 mx-auto text-center bg-white py-4 my-4 shadow">
     <div id="annual" class="col-sm-10 mx-auto">
         <table class="table table-response-sm table-bordered">
             <thead>
@@ -179,7 +179,7 @@
     </div>
 </div>
 
-<div class="col-sm-8 mx-auto text-center bg-white py-4 my-4 shadow">
+<div class="col-sm-10 mx-auto text-center bg-white py-4 my-4 shadow">
     <p> Information above regarding inspection vehicle types was retrieved from the
         <br><a
             href="https://www.dot.state.pa.us/Public/DVSPubsForms/BMV/BMV%20Manuals/Pub_45%20Inspections%20Regulations/PUB-45.pdf"
